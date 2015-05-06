@@ -22,7 +22,7 @@ Phamous is a PHP micro-framework for single-page applications with:
 
 * JSON-based configuration for both server-side and client-side components
 * As much app logic as possible in JavaScript or JSON, server-side PHP only for validation and custom processing beyond built-in JSON API
-* admin panel for accounts (1st = admin), model data, background script status, event logs, (confirmation of model changes?)
+* admin panel for accounts (email of 1st admin is specified in config), model data, background script status, event logs, (confirmation of model changes?)
 * self-monitoring and auto-restarting scripts for background operations
 * message-based synchronization
 * dynamic XML Sitemap and HTML generation for selected model data
@@ -34,6 +34,7 @@ Phamous is a PHP micro-framework for single-page applications with:
 * permissions and groups (see below)
 * routes
 * models
+* one separate, non-public, server-side config file for admin user, imap, api keys, etc.
 
 ## User Management
 
@@ -224,7 +225,7 @@ Phamous is a PHP micro-framework for single-page applications with:
 
 ## Server Node Synchronization
 
-* Nodes pub/sub to/from data events on other nodes (via background scripts) as specified in the configuration
+* Nodes pub/sub to/from data events on other nodes (via background scripts) as specified in the (server) configuration
 * A shared secret is transferred during the very first sync operation
 * Nodes fat-ping all non-firewalled nodes with their own events
 * Firewalled nodes can't be accessed, they have to push their events **and** pull their subscriptions from all other nodes
