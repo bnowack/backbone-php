@@ -62,7 +62,7 @@ Phamous is a PHP micro-framework for single-page applications with:
         }
 
 
-* Permissions consist of a resource pattern and optional read/write-restrictions (stored in config)
+* Permissions consist of read/write access patterns and optional restrictions (stored in config)
 
         {
             "id": "edit-everything",
@@ -89,14 +89,14 @@ Phamous is a PHP micro-framework for single-page applications with:
             "allow": {
                 "read": "/posts/:id",
                 "write": "/posts/:id",
-                "if": ["/posts/:id/author/id === $user/id"]
+                "if": ["/posts/:id/author === $user"]
             }
         }
 
 ## Models
 
         {
-            "src": "/posts",
+            "src": "/src/posts",
             "typeUri": "http://schema.org/Post",
             "routes": {
                 "/posts": "collection",
@@ -135,6 +135,10 @@ Phamous is a PHP micro-framework for single-page applications with:
                     "type": "enum",
                     "options": ["draft", "public", "private", "secret"]
                     "robots": false
+                },
+                "author": {
+                    "type": "resource",
+                    "format": "/users/:id"
                 }
             }
         }
@@ -150,7 +154,7 @@ Phamous is a PHP micro-framework for single-page applications with:
 * **`GET /blog/2015-01-01-hello-world`**: 
     * detected route: `/blog/:slug`
     * detected parameter "slug": `2015-01-01-hello-world`
-    * detected source directory: `/myapp/posts`
+    * detected source directory: `/src/posts`
     * PHP class file: `/src/posts/Post.php` or `/vendor/bnowack/phamous/src/Resource.php`
     * Backbone model: `/src/posts/Post.js` or `/vendor/bnowack/phamous/src/Resource.js`
     * Backbone view: `/src/posts/PostView.js` or `/vendor/bnowack/phamous/src/ResourceView.js`
@@ -161,7 +165,7 @@ Phamous is a PHP micro-framework for single-page applications with:
     * detected route: `/blog(/:year)(/:month)(/:day)`
     * detected parameter "year": `2015`
     * detected parameter "month": `01`
-    * detected source directory: `/myapp/posts`
+    * detected source directory: `/src/posts`
     * PHP class file: `/src/posts/PostCollection.php` or `/vendor/bnowack/phamous/src/ResourceCollection.php`
     * Backbone collection: `/src/posts/PostCollection.js` or `/vendor/bnowack/phamous/src/ResourceCollection.js`
     * Backbone model: `/src/posts/Post.js` or `/vendor/bnowack/phamous/src/Resource.js`
