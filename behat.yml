@@ -1,0 +1,18 @@
+default:
+  autoload:
+    '': %paths.base%/features/bootstrap
+  suites:
+    default:
+      paths:
+        - %paths.base%/features
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+phantomjs:
+  extensions:
+    Behat\MinkExtension:
+      base_url: 'http://localhost'
+      goutte: ~
+      selenium2:
+        wd_host: "http://localhost:8643/wd/hub"
