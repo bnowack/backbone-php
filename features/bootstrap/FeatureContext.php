@@ -9,7 +9,7 @@ use Behat\Gherkin\Node\TableNode;
 /**
  * Defines application features from the specific context.
  */
-class FeatureContext implements Context, SnippetAcceptingContext
+class FeatureContext extends PHPUnit_Framework_TestCase implements Context, SnippetAcceptingContext
 {
     /**
      * Initializes context.
@@ -20,6 +20,7 @@ class FeatureContext implements Context, SnippetAcceptingContext
      */
     public function __construct()
     {
+        parent::__construct();
     }
     
     /**
