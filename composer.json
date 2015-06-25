@@ -27,8 +27,8 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "files": [
-            "src/exceptions.php"
+        "classmap": [
+            "src/Phamous/exceptions.php"
         ],
         "psr-4": {
             "": "src/"
