@@ -10,7 +10,7 @@ Phamous is a PHP micro-framework for single-page applications with:
 
 ![Phamous Architecture](doc/img/phamous-architecture.png)
 
-### Core Libraries and Technologies
+### Core Libraries and Technologies used
 
 * [Famo.us](http://famo.us/): app-like client-side views
 * [BackboneJS](https://github.com/jashkenas/backbone): client-side router, models, collections
@@ -82,7 +82,7 @@ Phamous is a PHP micro-framework for single-page applications with:
             "id": "read-public-posts",
             "allow": {
                 "read": "/posts/:id",
-                "if": ["/posts/:id/state === "public"]
+                "if": ["/posts/:id/state === 'public'"]
             }
         },
         {
