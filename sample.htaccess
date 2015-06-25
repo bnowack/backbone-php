@@ -1,0 +1,24 @@
+RewriteEngine On
+RewriteBase /
+
+# Hide the project's git directory (if any)
+RedirectMatch 404 /\.git
+
+# Hide server configuration files
+RedirectMatch 404 config/server(\..+)?\.json
+
+# Redirect any other non-file requests to the front controller.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule .* vendor/bnowack/phamous/src/Phamous/index.php [L]
+
+# Compress text output
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
+    <IfModule mod_headers.c>
+    Header append Vary User-Agent
+    </IfModule>
+    BrowserMatch ^Mozilla/4 gzip-only-text/html
+    BrowserMatch ^Mozilla/4\.0[678] no-gzip
+    BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
