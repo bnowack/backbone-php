@@ -175,11 +175,12 @@ Phamous is a PHP micro-framework for single-page applications with:
     * output (accept json): list of posts with `year=2015` and `month=01`
 
 ## JSON API
-    * following the [JSON API proposal](http://jsonapi.org/)
-    * automatic support for all defined models
-    * custom extensions at PHP and/or JS level
-    * default collection parameters: `limit`, `offset`, `fields`
-    * default collection sub-resources: `count`, `search`
+
+* following the [JSON API proposal](http://jsonapi.org/)
+* automatic support for all defined models
+* custom extensions at PHP and/or JS level
+* default collection parameters: `limit`, `offset`, `fields`
+* default collection sub-resources: `count`, `search`
             
 ## Background Scripts
 
@@ -233,25 +234,25 @@ Phamous is a PHP micro-framework for single-page applications with:
       The Pi needs to pub/sub to keep all nodes sync'd, like turning on a light in the local network even when the
       corresponding command (such as `PUT /devices/kitchen-light {"status": "on"}`) is executed on a remote node.
         
-        "nodes": {
-            "https://example.com/my-home": {
-                "subscriptions": [
-                    "/devices"
-                ]
-            },
-            "http://192.168.0.27/my-home": {
-                "firewalled": true,
-                "subscriptions": [
-                    "/devices"
-                ]
-            },
-            "http://192.168.0.27/backup": {
-                "firewalled": true,
-                "subscriptions": [
-                    "*"
-                ]
+            "nodes": {
+                "https://example.com/my-home": {
+                    "subscriptions": [
+                        "/devices"
+                    ]
+                },
+                "http://192.168.0.27/my-home": {
+                    "firewalled": true,
+                    "subscriptions": [
+                        "/devices"
+                    ]
+                },
+                "http://192.168.0.27/backup": {
+                    "firewalled": true,
+                    "subscriptions": [
+                        "*"
+                    ]
+                }
             }
-        }
 
 ## Example Program Flow
 
