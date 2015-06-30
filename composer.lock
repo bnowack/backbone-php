@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d3257d9d4e48445b0c61ad5d73d8a1c",
+    "hash": "f00d536940a14036fb68186f19869502",
     "packages": [],
     "packages-dev": [
         {
@@ -464,6 +464,45 @@
                 "transliterator"
             ],
             "time": "2014-05-15 22:08:22"
+        },
+        {
+            "name": "bnowack/scss-watcher",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bnowack/scss-watcher.git",
+                "reference": "b926926307fae3d1528938e0241263908dc10c52"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bnowack/scss-watcher/zipball/b926926307fae3d1528938e0241263908dc10c52",
+                "reference": "b926926307fae3d1528938e0241263908dc10c52",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Benjamin Nowack",
+                    "homepage": "http://bnowack.de/",
+                    "role": "developer"
+                }
+            ],
+            "description": "SCSS Watcher for multiple and/or nested directories",
+            "keywords": [
+                "css",
+                "php",
+                "scss"
+            ],
+            "time": "2015-06-25 08:36:05"
         },
         {
             "name": "doctrine/instantiator",
@@ -1008,16 +1047,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.1.6",
+            "version": "2.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44"
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
-                "reference": "631e365cf26bb2c078683e8d9bcf8bc631ac4d44",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/07e27765596d72c378a6103e80da5d84e802f1e4",
+                "reference": "07e27765596d72c378a6103e80da5d84e802f1e4",
                 "shasum": ""
             },
             "require": {
@@ -1066,7 +1105,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-06-19 07:11:55"
+            "time": "2015-06-30 06:52:35"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -2487,7 +2526,8 @@
     "stability-flags": {
         "behat/mink-goutte-driver": 0,
         "behat/mink-extension": 0,
-        "behat/mink-selenium2-driver": 0
+        "behat/mink-selenium2-driver": 0,
+        "bnowack/scss-watcher": 0
     },
     "prefer-stable": false,
     "prefer-lowest": false,
