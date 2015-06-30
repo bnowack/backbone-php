@@ -1,5 +1,1 @@
 formatter.name: pretty
-suites:
-    phamous:
-        namespace: phamous
-        psr4_prefix: phamous
