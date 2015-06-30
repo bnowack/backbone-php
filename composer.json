@@ -29,7 +29,6 @@
     },
     "autoload": {
         "classmap": [
-            "src/Phamous/exceptions.php"
         ],
         "psr-4": {
             "": "src/"
