@@ -1,5 +1,7 @@
 .DS_Store
+.sass-cache
 /nbproject
 /vendor
 /bin
 /node_modules
+/data
