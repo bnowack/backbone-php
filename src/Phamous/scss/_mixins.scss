@@ -1,0 +1,17 @@
+
+@mixin clearfix {
+    overflow: hidden; /* clearfix */
+    zoom: 1;  /* clearfix addition for IE */
+}
+
+@mixin border-box {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+
+@mixin box-shadow {
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
