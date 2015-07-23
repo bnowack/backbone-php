@@ -1,18 +1,26 @@
 default:
-  autoload:
-    '': %paths.base%/features/bootstrap
-  suites:
-    default:
-      paths:
-        - %paths.base%/features
-  extensions:
-    Behat\MinkExtension:
-      goutte: ~
-      selenium2: ~
-phantomjs:
-  extensions:
-    Behat\MinkExtension:
-      base_url: 'http://localhost'
-      goutte: ~
-      selenium2:
-        wd_host: "http://localhost:8643/wd/hub"
+    autoload:
+        '': %paths.base%/features/_bootstrap
+    extensions:
+        Behat\MinkExtension:
+            base_url: 'http://localhost:8888/'
+            javascript_session: selenium2
+            browser_name: phantomjs
+            goutte: ~
+            selenium2:
+                wd_host: "http://localhost:8643/wd/hub"
+    suites:
+        default:
+            paths:    [ %paths.base%/features ]
+            contexts: [ FeatureContext ]
+        ui:
+            paths:    [ %paths.base%/features ]
+            contexts: [ UiContext ]
+            filters:  { tags: @ui }
+        user:
+            paths:    [ %paths.base%/features ]
+            contexts: [ FeatureContext ]
+            filters:  { role: user }
+        app:
+            paths:    [ %paths.base%/features/app ]
+            contexts: [ FeatureContext ]
