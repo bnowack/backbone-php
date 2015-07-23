@@ -3,8 +3,10 @@ Feature: Status page
     As an application maintainer
     I can access a status page with system information
 
-        Given I go to "/administration/status"
+    @ui
     Scenario: View status page
+        Given the system configuration has been loaded
+        And I go to "/status"
         Then I should get a successful response with format "json"
-        And I should see a field "status" with value "ok"
-        And I should see a field "timestamp"
+        And I should see a JSON field "status" with value "ok"
+        And I should see a JSON field "timestamp"
