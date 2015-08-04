@@ -158,4 +158,42 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
         }
     }
     
+    /**
+     * Returns a list of header values for the provided header name
+     *
+     * @param string $name Header name (case-insensitive)
+     * @return null|array List of header values
+     */
+    protected function getResponseHeaders($name)
+    {
+        $headers = $this->getSession()->getResponseHeaders();
+        foreach ($headers as $headerName => $headerValues) {
+            if (strtolower($name) === strtolower($headerName)) {
+                return $headerValues;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * @Then I should get a successful response
+     */
+    public function iShouldGetASuccessfulResponse()
+    {
+        $session = $this->getSession();
+        $actual = $session->getStatusCode();
+        Assertions::assertGreaterThanOrEqual(200, $actual, 'The response should be successful');
+        Assertions::assertLessThan(300, $actual, 'The response should be successful');
+    }
+
+    /**
+     * @Then I should get a successful response with format :format
+     */
+    public function iShouldGetASuccessfulResponseWithFormat($format)
+    {
+        $this->iShouldGetASuccessfulResponse();
+        $actual = $this->getResponseHeaders('content-type')[0];
+        Assertions::assertRegExp("~$format~i", $actual, "Response type should match '$format'");
+    }
+
 }
