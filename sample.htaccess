@@ -4,6 +4,12 @@ RewriteBase /
 # Hide the project's git directory (if any)
 RedirectMatch 404 /\.git
 
+# Hide the project's bin directory
+RedirectMatch 404 /bin
+
+# Hide the project's data directory
+RedirectMatch 404 /data
+
 # Hide server configuration files
 RedirectMatch 404 config/server(\..+)?\.json
 
