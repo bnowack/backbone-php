@@ -51,9 +51,13 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
             $port = $config['port'];
             $root = $config['root'];
             $host = 'localhost';
+            $routerString = isset($config['router'])
+                ? ' ' . $config['router']
+                : '';
             // launch if not already up
             if (!self::serverIsUp($host, $port)) {
-                $output = trim(shell_exec("php -S $host:$port -t $root >/dev/null 2>&1 & echo $!"));
+                $command = "php -S $host:$port -t $root$routerString >/dev/null 2>&1 & echo $!";
+                $output = trim(shell_exec($command));
                 self::$httpdPid = is_numeric($output) ? intval($output) : null;
                 
             }
