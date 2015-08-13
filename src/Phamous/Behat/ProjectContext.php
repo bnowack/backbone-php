@@ -101,17 +101,18 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
             $host = 'localhost';
             // launch if not already up
             if (!self::serverIsUp($host, $port)) {
-                $output = trim(shell_exec("phantomjs --webdriver=$port >/dev/null 2>&1 & echo $!"));
+                $command = "phantomjs --webdriver=$port >/dev/null 2>&1 & echo $!";
+                $output = trim(shell_exec($command));
                 self::$ghostDriverPid = is_numeric($output) ? intval($output) : null;
             }
-            // check that the server is running, wait up to 2 seconds
+            // check that the server is running, wait up to 5 seconds
             $attempts = 0;
             do {
                 $up = self::serverIsUp($host, $port);
                 $attempts++;
                 usleep(100000); // 0.1 sec
             }
-            while (!$up && $attempts < 20);
+            while (!$up && $attempts < 50);
             if (!$up) {
                 self::stopProcess(self::$ghostDriverPid);// just in case it *did* start but did not respond in time
                 throw new RuntimeException("Could not start ghost driver at $host:$port");
