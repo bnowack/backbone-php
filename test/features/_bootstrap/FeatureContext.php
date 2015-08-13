@@ -14,7 +14,7 @@ use Phamous\Behat\ProjectContext;
 /**
  * Defines application features from the specific context.
  */
-class UiContext extends ProjectContext implements Context, SnippetAcceptingContext
+class FeatureContext extends ProjectContext implements Context, SnippetAcceptingContext
 {
 
     /**
@@ -23,6 +23,7 @@ class UiContext extends ProjectContext implements Context, SnippetAcceptingConte
     public function __construct()
     {
         parent::__construct();
+        $this->testDir = __DIR__ . '/../../';
     }
- 
+
 }

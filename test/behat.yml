@@ -17,7 +17,7 @@ default:
             paths:    [ %paths.base%/features ]
             contexts: [ UiContext ]
             filters:  { tags: @ui }
-            httpd:    { port: 8888, root: %paths.base% }
+            httpd:    { port: 8888, root: %paths.base%, router: router.php }
             ghostd:   { port: 8643 }
         user:
             paths:    [ %paths.base%/features ]
@@ -26,3 +26,5 @@ default:
         app:
             paths:    [ %paths.base%/features/app ]
             contexts: [ FeatureContext ]
+            httpd:    { port: 8888, root: %paths.base%, router: router.php }
+            ghostd:   { port: 8643 }
