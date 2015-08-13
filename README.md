@@ -20,6 +20,7 @@ Phamous is a PHP micro-framework for single-page applications with:
 
 ## Features
 
+* Front Controller serving generic BackboneJS view with minimal server-generated content (only SEO-relevant parts like title and plain model content)
 * JSON-based configuration for both server-side and client-side components
 * As much app logic as possible in JavaScript or JSON, server-side PHP only for validation and custom processing beyond built-in JSON API
 * admin panel for accounts (email of 1st admin is specified in config), model data, background script status, event logs, (confirmation of model changes?)
@@ -34,7 +35,7 @@ Phamous is a PHP micro-framework for single-page applications with:
 * permissions and groups (see below)
 * routes
 * models
-* one separate, non-public, server-side config file for admin user, imap, api keys, etc.
+* a non-public, server-only config file for admin user, imap, api keys, etc.
 
 ## User Management
 
@@ -44,7 +45,34 @@ Phamous is a PHP micro-framework for single-page applications with:
             id: "mail@example.com",
             passwordHash: "7dsf3648723644...",
             passwordAlgorithm: "php_hash",
-            groups: ["admins"]
+            groups: ["admin"]
+        }
+
+* Permissions consist of read/write access patterns and optional restrictions (stored in config)
+
+        "edit-everything": {
+            "allow": { 
+                "read": "/",
+                "write": "/"
+            }
+        },
+        "read-all-posts": {
+            "allow": { 
+                "read": "/posts"
+            }
+        },
+        "read-public-posts": {
+            "allow": {
+                "read": "/posts/:id",
+                "if": ["/posts/:id/state === 'public'"]
+            }
+        },
+        "manage-own-posts": {
+            "allow": {
+                "read": "/posts/:id",
+                "write": "/posts/:id",
+                "if": ["/posts/:id/author === $user"]
+            }
         }
 
 * Groups are sets of permissions (stored in config, with built-in groups "*" and "admins"):
@@ -54,50 +82,20 @@ Phamous is a PHP micro-framework for single-page applications with:
             permissions: ["read-public-posts", "create-session"]
         },
         {
-            id: "admins",
+            id: "admin",
             permissions: ["edit-everything"]
         },
         {
-            id: "users",
+            id: "user",
             permissions: ["edit-own-posts"]
         }
 
 
-* Permissions consist of read/write access patterns and optional restrictions (stored in config)
+## Models with routes
 
         {
-            "id": "edit-everything",
-            "allow": { 
-                "read": "/",
-                "write": "/"
-            }
-        },
-        {
-            "id": "read-all-posts",
-            "allow": { 
-                "read": "/posts"
-            }
-        },
-        {
-            "id": "read-public-posts",
-            "allow": {
-                "read": "/posts/:id",
-                "if": ["/posts/:id/state === 'public'"]
-            }
-        },
-        {
-            "id": "manage-own-posts",
-            "allow": {
-                "read": "/posts/:id",
-                "write": "/posts/:id",
-                "if": ["/posts/:id/author === $user"]
-            }
-        }
-
-## Models
-
-        {
-            "src": "/src/posts",
+            "assets": "/src/posts",
+            "phpClass": "MyNamespace\Post",
             "typeUri": "http://schema.org/Post",
             "routes": {
                 "/posts": "collection",
