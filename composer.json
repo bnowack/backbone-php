@@ -1,7 +1,7 @@
 {
-    "name": "bnowack/phamous",
-    "description": "PHP micro-framework for near-realtime Backbone JS applications with Famous Engine views",
-    "keywords": ["PHP", "Backbone JS", "Famous Engine", "micro-framework", "SQlite"],
+    "name": "bnowack/backbone-php",
+    "description": "PHP micro-framework for near-realtime BackboneJS applications",
+    "keywords": ["PHP", "BackboneJS", "micro-framework", "SQlite"],
     "license": "MIT",
     "authors": [
         {

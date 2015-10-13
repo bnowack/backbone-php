@@ -1,6 +1,6 @@
 <?php
 
-// file system base directory, derived from `/vendor/bnowack/phamous/src/scripts/index.php`
+// file system base directory, derived from `/vendor/bnowack/backbone-php/src/scripts/index.php`
 $fileBase = dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/';
 
 // include `vendor/autoload.php`

@@ -1,5 +1,5 @@
 <?php
-namespace Phamous\Behat;
+namespace BackbonePhp\Behat;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;

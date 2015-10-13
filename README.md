@@ -1,22 +1,21 @@
-# Phamous (PHP + Famo.us)
+# BackbonePHP (BackboneJS + PHP)
 
-Phamous is a PHP micro-framework for single-page applications with:
+BackbonePHP is a micro-framework for single-page applications with:
 
-* user interfaces that behave like mobile apps,
 * data views that can be indexed by search engines,
 * automatic UI updates when underlying data changes,
-* publish/subscribe-like data exchange between various client and server nodes
+* publish/subscribe-like data exchange between client and server nodes
 * simple server setups as target environment (e.g. shared hosts)
 
-![Phamous Architecture](doc/img/phamous-architecture.png)
+![BackbonePHP Architecture](doc/img/architecture.png)
 
 ### Core Libraries and Technologies used
 
-* [Famo.us](http://famo.us/): app-like client-side views
 * [BackboneJS](https://github.com/jashkenas/backbone): client-side router, models, collections
 * [PHP](http://php.net/): RESTful JSON API, data synchronization, XML Sitemap files, server-side views, custom handlers
 * [SQLite](http://www.sqlite.org/): server-side data, sessions, cache
 * [UnderscoreJS](https://github.com/jashkenas/underscore/): templating, array operations
+* [VelocityJS](https://github.com/julianshapiro/velocity/): UI transitions and animations
 
 ## Features
 
@@ -154,9 +153,9 @@ Phamous is a PHP micro-framework for single-page applications with:
     * detected route: `/blog/:slug`
     * detected parameter "slug": `2015-01-01-hello-world`
     * detected source directory: `/src/posts`
-    * PHP class file: `/src/posts/Post.php` or `/vendor/bnowack/phamous/src/Resource.php`
-    * Backbone model: `/src/posts/Post.js` or `/vendor/bnowack/phamous/src/Resource.js`
-    * Backbone view: `/src/posts/PostView.js` or `/vendor/bnowack/phamous/src/ResourceView.js`
+    * PHP class file: `/src/posts/Post.php` or `/vendor/bnowack/backbone-php/src/Resource.php`
+    * Backbone model: `/src/posts/Post.js` or `/vendor/bnowack/backbone-php/src/Resource.js`
+    * Backbone view: `/src/posts/PostView.js` or `/vendor/bnowack/backbone-php/src/ResourceView.js`
     * output (accept html): index.htm with raw microdata-enhanced HTML5 for the selected post
     * output (accept json): post data
             
@@ -165,10 +164,10 @@ Phamous is a PHP micro-framework for single-page applications with:
     * detected parameter "year": `2015`
     * detected parameter "month": `01`
     * detected source directory: `/src/posts`
-    * PHP class file: `/src/posts/PostCollection.php` or `/vendor/bnowack/phamous/src/ResourceCollection.php`
-    * Backbone collection: `/src/posts/PostCollection.js` or `/vendor/bnowack/phamous/src/ResourceCollection.js`
-    * Backbone model: `/src/posts/Post.js` or `/vendor/bnowack/phamous/src/Resource.js`
-    * Backbone view: `/src/posts/PostCollectionView.js` or `/vendor/bnowack/phamous/src/ResourceCollectionView.js`
+    * PHP class file: `/src/posts/PostCollection.php` or `/vendor/bnowack/backbone-php/src/ResourceCollection.php`
+    * Backbone collection: `/src/posts/PostCollection.js` or `/vendor/bnowack/backbone-php/src/ResourceCollection.js`
+    * Backbone model: `/src/posts/Post.js` or `/vendor/bnowack/backbone-php/src/Resource.js`
+    * Backbone view: `/src/posts/PostCollectionView.js` or `/vendor/bnowack/backbone-php/src/ResourceCollectionView.js`
     * output (accept html): index.htm with raw microdata-enhanced HTML5 for all posts with `year=2015` and `month=01`
     * output (accept json): list of posts with `year=2015` and `month=01`
 

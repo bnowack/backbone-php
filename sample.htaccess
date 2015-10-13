@@ -15,7 +15,7 @@ RedirectMatch 404 config/server(\..+)?\.json
 
 # Redirect any other non-file requests to the front controller.
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* vendor/bnowack/phamous/src/scripts/index.php [L]
+RewriteRule .* vendor/bnowack/backbone-php/src/scripts/index.php [L]
 
 # Compress text output
 <IfModule mod_deflate.c>

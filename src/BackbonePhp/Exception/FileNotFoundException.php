@@ -1,5 +1,5 @@
 <?php
 
-namespace Phamous\Exception;
+namespace BackbonePhp\Exception;
 
 class FileNotFoundException extends \RuntimeException { }
