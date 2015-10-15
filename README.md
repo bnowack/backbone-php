@@ -181,7 +181,7 @@ BackbonePHP is a micro-framework for single-page applications with:
             
 ## Background Scripts
 
-* 2-n scripts keep running in the background for UI-less operations
+* 2 - n scripts keep running in the background for UI-less operations
 * server nodes and scripts ping each other to control that each node's background scripts stay alive or get re-invoked automatically
 * example use cases: fetch data from 3rd-party sites, process/convert/import/export data
 
@@ -195,14 +195,14 @@ BackbonePHP is a micro-framework for single-page applications with:
     * e.g. `/posts`
 * client-side nodes get "informed" when their subscriptions change (SSE/long-polling/polling)
     * server nodes generate cached files for client subscriptions,
-      so that application performance is not affected even by frequent polling
+      so that application performance is less affected by frequently polling clients
     * sessions and cache watchers expire when clients drop the connection
 
 ## Event Log
 
 * System events get logged locally for processing and syndication through background scripts
 * The Event Log gets partitioned automatically to keep read/write operations efficient
-* The format is based on JSON Patch (RDF 6902), with added (micro-)timestamp, origin node, and user fields
+* The format is based on JSON Patch (RFC 6902), with added (micro-)timestamp, origin node, and user fields
 
         {
             "op": "add",
