@@ -1,0 +1,11 @@
+{
+    "webBase": "/",
+    "title": "BackbonePHP Test",
+    
+    "permissions": {
+    },
+    "groups": {
+    },
+    "models": {
+    }
+}
