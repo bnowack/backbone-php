@@ -31,6 +31,11 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
     private static $ghostDriverPid;
     
     /**
+     * @var BackbonePhp\Application
+     */
+    public $application;
+
+    /**
      * Initializes context.
      */
     public function __construct()
@@ -200,5 +205,32 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
         $actual = $this->getResponseHeaders('content-type')[0];
         Assertions::assertRegExp("~$format~i", $actual, "Response type should match '$format'");
     }
+    
+    /**
+     * @Given an application object
+     */
+    public function anApplicationObject()
+    {
+        $this->application = new \BackbonePhp\Application();
+    }
+    
+    /**
+     * @Given I set the config option :key to :value
+     */
+    public function iSetTheConfigOptionTo($key, $value)
+    {
+        $this->application->setConfig($key, $value);
+    }
 
+    /**
+     * @Then I should get :value for config option :name
+     */
+    public function iShouldGetForConfigOption($value, $name)
+    {
+        if ($value === 'NULL') {
+            $value = null;
+        }
+        $actual = $this->application->getConfig($name);
+        Assertions::assertEquals($value, $actual);
+    }
 }
