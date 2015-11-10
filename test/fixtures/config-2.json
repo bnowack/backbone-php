@@ -1,0 +1,11 @@
+{
+    "foo": "baz",
+    "bat": "test",
+    "permissions": {
+        "read-all-posts": {
+            "allow": { 
+                "read": "/posts"
+            }
+        }
+    }
+}
