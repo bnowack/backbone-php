@@ -76,15 +76,13 @@ BackbonePHP is a micro-framework for single-page applications with:
 
 * Groups are sets of permissions (stored in config, with built-in groups "*" and "admins"):
 
-        {
-            id: "*",
+        "*": {
             permissions: ["read-public-posts", "create-session"]
         },
-        {
-            id: "admin",
+        "admin": {
             permissions: ["edit-everything"]
         },
-        {
+        "user": {
             id: "user",
             permissions: ["edit-own-posts"]
         }
@@ -92,7 +90,7 @@ BackbonePHP is a micro-framework for single-page applications with:
 
 ## Models with routes
 
-        {
+        "posts": {
             "assets": "/src/posts",
             "phpClass": "MyNamespace\Post",
             "typeUri": "http://schema.org/Post",
