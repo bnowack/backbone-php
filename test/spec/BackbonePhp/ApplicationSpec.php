@@ -7,6 +7,11 @@ use Prophecy\Argument;
 
 class ApplicationSpec extends ObjectBehavior
 {
+    
+    protected static function testsPath() {
+        return dirname(dirname(__DIR__)) . '/';
+    }
+    
     function it_is_initializable()
     {
         $this->shouldHaveType('BackbonePhp\Application');
@@ -27,6 +32,20 @@ class ApplicationSpec extends ObjectBehavior
         // trailing slash on webBase
         $this->setConfig('webBase', 'path/from/root/')->getConfig('webBase')->shouldReturn('path/from/root/');
         $this->setConfig('webBase', 'path/from/root')->getConfig('webBase')->shouldReturn('path/from/root/');
+    }
+        
+    public function it_should_load_a_config_file()
+    {
+        $this->setConfig('fileBase', self::testsPath());
+        $this->loadConfig('fixtures/config-1.json')->shouldReturn($this);
+        $this->getConfig('foo')->shouldReturn('bar');
+    }
+    
+    function it_should_throw_an_exception_when_loading_a_non_existing_or_invalid_config_file()
+    {
+        $this->setConfig('fileBase', self::testsPath());
+        $this->shouldThrow('\BackbonePhp\Exception\FileNotFoundException')->duringLoadConfig('fixtures/does-not-exist.json');
+        $this->shouldThrow('\BackbonePhp\Exception\InvalidJsonException')->duringLoadConfig('fixtures/invalid-json.txt');
     }
     
 }

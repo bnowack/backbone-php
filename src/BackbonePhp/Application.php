@@ -10,6 +10,10 @@ namespace BackbonePhp;
  *  (new BackbonePhp\Application())
  *      ->setConfig('fileBase', __DIR__ . '/')
  *      ->setConfig('webBase', '/app-directory/') // use only when app is not deployed to web root!
+ *      ->loadConfig('config/server.json')
+ *      ->loadConfig('config/models.json')
+ *      ->loadConfig('config/permissions.json')
+ *      ->loadConfig('config/groups.json')
  *  ;
  * 
  */
@@ -70,5 +74,18 @@ class Application
             return rtrim($value, '/') . '/';
         }
         return $value;
+    }
+    
+    /**
+     * Loads and applies configuration data from a (JSON) file
+     * 
+     * @param string $path Path to configuration file, relative to self::fileBase
+     * @return \BackbonePhp\Application
+     */
+    public function loadConfig($path)
+    {
+        $mergeFields = array('permissions', 'groups', 'models');
+        $this->config->load($this->config->get('fileBase') . $path, $mergeFields);
+        return $this;
     }
 }

@@ -233,4 +233,22 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
         $actual = $this->application->getConfig($name);
         Assertions::assertEquals($value, $actual);
     }
+    
+    /**
+     * @Given I load configuration options from :path
+     */
+    public function iLoadConfigurationOptionsFrom($path)
+    {
+        $this->application->loadConfig($path);
+    }
+
+    /**
+     * @Then I should count :size entries for config option :name
+     */
+    public function iShouldCountEntriesForConfigOption($size, $name)
+    {
+        $actual = count($this->application->getConfig($name));
+        Assertions::assertEquals(intval($size), $actual);
+    }    
+     
 }
