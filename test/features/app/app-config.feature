@@ -21,4 +21,4 @@ Feature: Application Configuration
         And I load configuration options from "fixtures/config-2.json"
         Then I should get "baz" for config option "foo"
         Then I should get "test" for config option "bat"
-        Then I should get 2 entries for config option "permissions" 
+        Then I should count 2 entries for config option "permissions" 
