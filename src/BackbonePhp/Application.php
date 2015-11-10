@@ -40,7 +40,8 @@ class Application
      */
     public function setConfig($option, $value)
     {
-        $this->config->set($option, $value);
+        $normalizedValue = $this->normalizeConfigOption($option, $value);
+        $this->config->set($option, $normalizedValue);
         return $this;
     }
 
@@ -55,4 +56,19 @@ class Application
         return $this->config->get($option);
     }
 
+    /**
+     * Normalizes a config option
+     * 
+     * @param string $option Config option name
+     * @param mixed $value Value of the config option
+     * @return mixed $value Normalized value of the config option
+     */
+    protected function normalizeConfigOption($option, $value)
+    {
+        // make sure fileBase and webBase have a trailing slash
+        if (in_array($option, array('fileBase', 'webBase'))) {
+            return rtrim($value, '/') . '/';
+        }
+        return $value;
+    }
 }

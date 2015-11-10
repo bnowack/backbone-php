@@ -18,4 +18,15 @@ class ApplicationSpec extends ObjectBehavior
         $this->getConfig('test')->shouldReturn('Test');
     }
     
+    public function it_should_normalize_base_config_options()
+    {
+        // trailing slash on fileBase
+        $this->setConfig('fileBase', 'path/to/dir')->getConfig('fileBase')->shouldReturn('path/to/dir/');
+        $this->setConfig('fileBase', 'path/to/dir/')->getConfig('fileBase')->shouldReturn('path/to/dir/');
+        
+        // trailing slash on webBase
+        $this->setConfig('webBase', 'path/from/root/')->getConfig('webBase')->shouldReturn('path/from/root/');
+        $this->setConfig('webBase', 'path/from/root')->getConfig('webBase')->shouldReturn('path/from/root/');
+    }
+    
 }
