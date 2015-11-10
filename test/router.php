@@ -14,3 +14,11 @@ if (php_sapi_name() !== 'cli-server') {
 
 // the base directory is 2 hops up from /test/router.php
 require_once dirname(__DIR__) . '/vendor/autoload.php';
+
+// serve static assets
+if (preg_match('/\.(png|jpg|jpe?g|gif|css|js|json|txt)$/i', $_SERVER["REQUEST_URI"])) {
+    return false;
+} else {
+    (new BackbonePhp\Application())
+    ;
+}
