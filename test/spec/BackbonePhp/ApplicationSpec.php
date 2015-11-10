@@ -11,4 +11,11 @@ class ApplicationSpec extends ObjectBehavior
     {
         $this->shouldHaveType('BackbonePhp\Application');
     }
+    
+    public function it_should_set_and_get_a_config_option()
+    {
+        $this->setConfig('test', 'Test')->shouldReturn($this);
+        $this->getConfig('test')->shouldReturn('Test');
+    }
+    
 }
