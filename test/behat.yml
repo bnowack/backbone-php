@@ -10,9 +10,6 @@ default:
             selenium2:
                 wd_host: "http://localhost:8643/wd/hub"
     suites:
-        default:
-            paths:    [ %paths.base%/features ]
-            contexts: [ FeatureContext ]
         ui:
             paths:    [ %paths.base%/features ]
             contexts: [ UiContext ]
