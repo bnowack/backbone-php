@@ -94,6 +94,8 @@ BackbonePHP is a micro-framework for single-page applications with:
             "assets": "/src/posts",
             "phpClass": "MyNamespace\Post",
             "typeUri": "http://schema.org/Post",
+            "pageTemplate": "/src/MyNamespace/templates/index.html.tpl",
+            "pageTitle": "My awesome Blog",
             "routes": {
                 "/posts": "collection",
                 "/posts/:id": "resource",
