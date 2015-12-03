@@ -2,7 +2,7 @@
     "foo": "baz",
     "bat": "test",
     "permissions": {
-        "read-all-posts": {
+        "readAllPosts": {
             "allow": { 
                 "read": "/posts"
             }

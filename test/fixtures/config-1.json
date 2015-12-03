@@ -1,7 +1,10 @@
 {
     "foo": "bar",
+    "object": {
+        "foo": "bar"
+    },
     "permissions": {
-        "edit-everything": {
+        "editEverything": {
             "allow": { 
                 "read": "/",
                 "write": "/"

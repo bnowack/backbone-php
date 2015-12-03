@@ -28,7 +28,14 @@ class ConfigSpec extends ObjectBehavior
         $this->load(self::fixturesPath() . 'config-1.json')->shouldReturn($this);
         $this->get('foo')->shouldReturn('bar');
         $this->get('baz')->shouldReturn(null);
-        $this->get('permissions')->shouldHaveCount(1);
+        $this->get('permissions')->editEverything->shouldHaveType('\stdClass');
+    }
+    
+    public function it_loads_options_as_object()
+    {
+        $this->load(self::fixturesPath() . 'config-1.json')->shouldReturn($this);
+        $this->get('object')->shouldHaveType('\stdClass');
+        $this->get('object')->foo->shouldReturn('bar');
     }
     
     public function it_combines_loaded_config_options()
@@ -38,8 +45,9 @@ class ConfigSpec extends ObjectBehavior
         $this->get('foo')->shouldReturn('baz');
         $this->get('baz')->shouldReturn(null);
         $this->get('bat')->shouldReturn('test');
-        $this->get('permissions')->shouldBeArray();
-        $this->get('permissions')->shouldHaveCount(2);
+        $this->get('permissions')->shouldHaveType('\stdClass');
+        $this->get('permissions')->editEverything->shouldHaveType('\stdClass');
+        $this->get('permissions')->readAllPosts->shouldHaveType('\stdClass');
     }
     
     public function it_returns_a_default_value()
