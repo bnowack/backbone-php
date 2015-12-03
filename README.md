@@ -99,7 +99,7 @@ BackbonePHP is a micro-framework for single-page applications with:
                 "/posts/:id": "resource",
                 "/blog(/:year)(/:month)(/:day)": "collection-url",
                 "/blog/:slug": "resource-url"
-            ],
+            },
             "fields": {
                 "slug": {
                     "type": "string",
