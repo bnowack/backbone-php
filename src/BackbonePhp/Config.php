@@ -31,11 +31,12 @@ class Config
      * Returns a config option
      * 
      * @param str $name Option name
-     * @return mixed|null Option value or null if not set
+     * @param mixed $default Default return value
+     * @return mixed|null Option value (if set) or default value (if provided) or null
      */
-    public function get($name)
+    public function get($name, $default = null)
     {
-       return isset($this->data[$name]) ? $this->data[$name] : null;
+       return isset($this->data[$name]) ? $this->data[$name] : $default;
     }
     
     /**

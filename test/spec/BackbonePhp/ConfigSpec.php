@@ -42,4 +42,9 @@ class ConfigSpec extends ObjectBehavior
         $this->get('permissions')->shouldHaveCount(2);
     }
     
+    public function it_returns_a_default_value()
+    {
+        $this->get('undefined', 'test')->shouldReturn('test');
+    }
+    
 }
