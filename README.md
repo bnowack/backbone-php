@@ -91,9 +91,8 @@ BackbonePHP is a micro-framework for single-page applications with:
 ## Models with routes
 
         "posts": {
-            "assets": "/src/posts",
-            "phpClass": "MyNamespace\Post",
-            "typeUri": "http://schema.org/Post",
+            "classPath": "/src/MyNamespace/Post/",
+            "resourceType": "http://schema.org/Post",
             "pageTemplate": "/src/MyNamespace/templates/index.html.tpl",
             "pageTitle": "My awesome Blog",
             "routes": {
@@ -152,10 +151,10 @@ BackbonePHP is a micro-framework for single-page applications with:
 * **`GET /blog/2015-01-01-hello-world`**: 
     * detected route: `/blog/:slug`
     * detected parameter "slug": `2015-01-01-hello-world`
-    * detected source directory: `/src/posts`
-    * PHP class file: `/src/posts/Post.php` or `/vendor/bnowack/backbone-php/src/Resource.php`
-    * Backbone model: `/src/posts/Post.js` or `/vendor/bnowack/backbone-php/src/Resource.js`
-    * Backbone view: `/src/posts/PostView.js` or `/vendor/bnowack/backbone-php/src/ResourceView.js`
+    * detected class path: `/src/myNamespace/Post/`
+    * PHP class file: `/src/MyNamespace/Post/Post.php` or `/vendor/bnowack/backbone-php/src/BackbonePhp/Resource.php`
+    * Backbone model: `/src/MyNamespace/Post/Post.js` or `/vendor/bnowack/backbone-php/src/BackbonePhp/Resource.js`
+    * Backbone view: `/src/MyNamespace/Post/PostView.js` or `/vendor/bnowack/backbone-php/src/BackbonePhp/ResourceView.js`
     * output (accept html): index.htm with raw microdata-enhanced HTML5 for the selected post
     * output (accept json): post data
             
@@ -163,11 +162,11 @@ BackbonePHP is a micro-framework for single-page applications with:
     * detected route: `/blog(/:year)(/:month)(/:day)`
     * detected parameter "year": `2015`
     * detected parameter "month": `01`
-    * detected source directory: `/src/posts`
-    * PHP class file: `/src/posts/PostCollection.php` or `/vendor/bnowack/backbone-php/src/ResourceCollection.php`
-    * Backbone collection: `/src/posts/PostCollection.js` or `/vendor/bnowack/backbone-php/src/ResourceCollection.js`
-    * Backbone model: `/src/posts/Post.js` or `/vendor/bnowack/backbone-php/src/Resource.js`
-    * Backbone view: `/src/posts/PostCollectionView.js` or `/vendor/bnowack/backbone-php/src/ResourceCollectionView.js`
+    * detected class path: `/src/myNamespace/Post/`
+    * PHP class file: `/src/MyNamespace/Post/PostCollection.php` or `/vendor/bnowack/backbone-php/src/BackbonePhp/ResourceCollection.php`
+    * Backbone collection: `/src/MyNamespace/Post/PostCollection.js` or `/vendor/bnowack/backbone-php/src/BackbonePhp/ResourceCollection.js`
+    * Backbone model: `/src/MyNamespace/Post/Post.js` or `/vendor/bnowack/backbone-php/src/BackbonePhp/Resource.js`
+    * Backbone view: `/src/MyNamespace/Post/PostCollectionView.js` or `/vendor/bnowack/backbone-php/src/BackbonePhp/ResourceCollectionView.js`
     * output (accept html): index.htm with raw microdata-enhanced HTML5 for all posts with `year=2015` and `month=01`
     * output (accept json): list of posts with `year=2015` and `month=01`
 
