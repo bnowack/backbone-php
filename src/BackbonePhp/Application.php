@@ -80,7 +80,7 @@ class Application
      * Loads and applies configuration data from a (JSON) file
      * 
      * @param string $path Path to configuration file, relative to self::fileBase
-     * @return \BackbonePhp\Application
+     * @return \BackbonePhp\Application Application instance
      */
     public function loadConfig($path)
     {
