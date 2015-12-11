@@ -11,15 +11,34 @@ class RequestSpec extends ObjectBehavior
         $this->shouldHaveType('BackbonePhp\Request');
     }
     
-    function it_sets_a_path()
+    function it_sets_a_method()
     {
-        $this->set('path', '/test')->get('path')->shouldReturn('/test');
-        $this->shouldThrow('BackbonePhp\Exception\UndefinedPropertyException')->duringSet('does-not-exist');
+        $this->setMethod('GET')->get('method')->shouldReturn('GET');
     }
     
-    function it_sets_only_known_properties()
+    function it_sets_a_path()
     {
-        $this->shouldThrow('BackbonePhp\Exception\UndefinedPropertyException')->duringSet('does-not-exist');
+        $this->setPath('/test')->get('path')->shouldReturn('/test');
+    }
+    
+    function it_generates_a_clean_path()
+    {
+        $this->setPath('/test.html?a=b')->get('cleanPath')->shouldReturn('/test.html');
+    }
+    
+    function it_generates_a_resource_path()
+    {
+        $this->setPath('/test.html?a=b')->get('resourcePath')->shouldReturn('/test');
+    }
+    
+    function it_generates_an_extension()
+    {
+        $this->setPath('/test.html?a=b')->get('extension')->shouldReturn('html');
+    }
+    
+    function it_generates_path_sections()
+    {
+        $this->setPath('/foo/bar/baz.html?a=b')->get('pathSections')->shouldReturn(["foo", "bar", "baz"]);
     }
     
 }
