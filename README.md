@@ -27,7 +27,6 @@ BackbonePHP is a micro-framework for single-page applications with:
 * message-based synchronization
 * dynamic XML Sitemap and HTML generation for selected model data
 
-
 ## Configuration
 
 * server nodes including synchronization settings 
@@ -49,24 +48,24 @@ BackbonePHP is a micro-framework for single-page applications with:
 
 * Permissions consist of read/write access patterns and optional restrictions (stored in config)
 
-        "edit-everything": {
+        "editEverything": {
             "allow": { 
                 "read": "/",
                 "write": "/"
             }
         },
-        "read-all-posts": {
+        "readAllPosts": {
             "allow": { 
                 "read": "/posts"
             }
         },
-        "read-public-posts": {
+        "readPublicPosts": {
             "allow": {
                 "read": "/posts/:id",
                 "if": ["/posts/:id/state === 'public'"]
             }
         },
-        "manage-own-posts": {
+        "manageOwnPosts": {
             "allow": {
                 "read": "/posts/:id",
                 "write": "/posts/:id",
@@ -77,14 +76,14 @@ BackbonePHP is a micro-framework for single-page applications with:
 * Groups are sets of permissions (stored in config, with built-in groups "*" and "admins"):
 
         "*": {
-            permissions: ["read-public-posts", "create-session"]
+            permissions: ["readPublicPosts", "createSession"]
         },
         "admin": {
-            permissions: ["edit-everything"]
+            permissions: ["editEverything"]
         },
         "user": {
             id: "user",
-            permissions: ["edit-own-posts"]
+            permissions: ["editOwnPosts"]
         }
 
 
