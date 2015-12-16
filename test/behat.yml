@@ -25,3 +25,8 @@ default:
             contexts: [ FeatureContext ]
             httpd:    { port: 8888, root: %paths.base%/../, router: router.php }
             ghostd:   { port: 8643 }
+        active:
+            paths:    [ %paths.base%/features/status ]
+            contexts: [ FeatureContext ]
+            httpd:    { port: 8888, root: %paths.base%/../, router: router.php }
+            ghostd:   { port: 8643 }
