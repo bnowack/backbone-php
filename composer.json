@@ -15,6 +15,7 @@
     "require-dev": {
         "behat/behat": "3.0.15",
         "phpspec/phpspec": "2.2.0",
+        "emuse/behat-html-formatter": "0.1.*",
         "behat/mink": "1.6.0",
         "phpunit/phpunit": "4.6.6",
         "behat/mink-goutte-driver": "@stable",

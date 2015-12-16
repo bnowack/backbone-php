@@ -9,6 +9,16 @@ default:
             goutte: ~
             selenium2:
                 wd_host: "http://localhost:8643/wd/hub"
+        emuse\BehatHTMLFormatter\BehatHTMLFormatterExtension:
+            name: html
+            renderer: Twig
+            file_name: index
+            print_args: true
+            print_outp: true
+            loop_break: true
+    formatters: 
+        html:
+            output_path: %paths.base%/reports/behat
     suites:
         ui:
             paths:    [ %paths.base%/features ]
