@@ -68,8 +68,8 @@ class RouterSpec extends ObjectBehavior
         $expectedBody = '<h1>Hello Static</h1>';
         Assertions::assertContains($expectedBody, $actual, 'should inject body template');
         
-        $expectedPageTitle = '<title>Test</title>';
-        Assertions::assertContains($expectedPageTitle, $actual, 'should generate page container');
+        $expectedMarkup = '<html>';
+        Assertions::assertContains($expectedMarkup, $actual, 'should generate page container');
     }
     
     public function it_dispatches_a_controller_call_request()
