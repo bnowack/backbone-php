@@ -13,15 +13,18 @@ use PHPUnit_Framework_TestCase as Assertions;
 class RouterSpec extends ObjectBehavior
 {
 
-    protected static function rootPath() {
+    protected static function rootPath()
+    {
         return dirname(dirname(dirname(__DIR__))) . '/';
     }
     
-    protected static function testsPath() {
+    protected static function testsPath()
+    {
         return dirname(dirname(__DIR__)) . '/';
     }
     
-    protected static function fixturesPath() {
+    protected static function fixturesPath()
+    {
         return dirname(dirname(__DIR__)) . '/fixtures/';
     }
     
@@ -38,7 +41,8 @@ class RouterSpec extends ObjectBehavior
         $this->shouldHaveType('BackbonePhp\Router');
     }
     
-    public function it_has_a_config_object() {
+    public function it_has_a_config_object()
+    {
         $this->config->shouldHaveType('BackbonePhp\Config');
     }
     
