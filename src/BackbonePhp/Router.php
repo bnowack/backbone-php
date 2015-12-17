@@ -2,7 +2,6 @@
 
 namespace BackbonePhp;
 
-use BackbonePhp\Template;
 use BackbonePhp\Exception\FileNotFoundException;
 use BackbonePhp\Exception\MethodNotFoundException;
 
@@ -188,21 +187,11 @@ class Router
      */
     protected function handleTemplateRequest($route)
     {
-        $pageTemplate = $route->model->pageTemplate;
-        $pageTitle = $route->model->pageTitle;
-        $bodyTemplate = $route->template;
-        $content = (new Template($this->config))
-            ->setContent("{{$pageTemplate}}")
-            ->set('path', $this->request->get('resourcePath'))
-            ->set('pageTitle', $pageTitle)
-            ->set('body', "{{$bodyTemplate}}")
-            ->render()
-            ->getContent()
-        ;
-        $this->response->setBody($content);
+        $controller = new Controller($this->config);
+        $controller->handleTemplateRouteRequest($this->request, $this->response, $route);
         return $this;
     }
-    
+        
     /**
      * Handles a controller call request
      * 
