@@ -151,12 +151,12 @@ class Request
      * @param string $name Property name
      * @return mixed Property value
      */
-    protected function getEnvironmentVariable($category, $name) {
+    public function getEnvironmentVariable($category, $name, $default = null) {
         if (!isset($this->environment->$category)) {
-            return null;
+            return $default;
         }
         if (!isset($this->environment->$category->$name)) {
-            return null;
+            return $default;
         }
         return $this->environment->$category->$name;
     }
