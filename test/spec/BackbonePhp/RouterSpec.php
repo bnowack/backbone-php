@@ -39,6 +39,7 @@ class RouterSpec extends ObjectBehavior
         $this->dispatchRequest($request, $response)->shouldReturn($this);
     }
     
+    // integration test
     public function it_dispatches_a_static_template_request()
     {
         // init
@@ -58,6 +59,7 @@ class RouterSpec extends ObjectBehavior
         Assertions::assertContains($expectedMarkup, $actual, 'should generate page container');
     }
     
+    // integration test
     public function it_dispatches_a_controller_call_request()
     {
         // init
@@ -73,6 +75,7 @@ class RouterSpec extends ObjectBehavior
         Assertions::assertEquals($expected, $actual, 'should be response from controller');
     }
     
+    // integration test
     public function it_dispatches_a_controller_call_request_with_route_parameters()
     {
         // init
