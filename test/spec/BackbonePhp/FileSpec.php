@@ -3,20 +3,17 @@
 namespace spec\BackbonePhp;
 
 use PhpSpec\ObjectBehavior;
+use spec\Spec;
 
 class FileSpec extends ObjectBehavior
 {
 
-    protected static function fixturesPath() {
-        return __DIR__ . '/../../fixtures/';
-    }
-    
     public function it_loads_json()
     {
-        $this->loadJson(self::fixturesPath() . 'config-1.json', true)->shouldBeArray();
-        $this->loadJson(self::fixturesPath() . 'config-1.json')->shouldHaveType('\stdClass');
-        $this->shouldThrow('BackbonePhp\Exception\InvalidJsonException')->duringLoadJson(self::fixturesPath() . 'invalid-json.txt');
-        $this->shouldThrow('BackbonePhp\Exception\FileNotFoundException')->duringLoadJson(self::fixturesPath() . 'does-not-exist.json');
+        $this->loadJson(Spec::fixturesPath() . 'config-1.json', true)->shouldBeArray();
+        $this->loadJson(Spec::fixturesPath() . 'config-1.json')->shouldHaveType('\stdClass');
+        $this->shouldThrow('BackbonePhp\Exception\InvalidJsonException')->duringLoadJson(Spec::fixturesPath() . 'invalid-json.txt');
+        $this->shouldThrow('BackbonePhp\Exception\FileNotFoundException')->duringLoadJson(Spec::fixturesPath() . 'does-not-exist.json');
     }
     
 }

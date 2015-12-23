@@ -3,14 +3,10 @@
 namespace spec\BackbonePhp;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+use spec\Spec;
 
 class TemplateSpec extends ObjectBehavior
 {
-    
-    protected static function fixturesPath() {
-        return dirname(dirname(__DIR__)) . '/fixtures/';
-    }
     
     function it_is_initializable()
     {
@@ -52,7 +48,7 @@ class TemplateSpec extends ObjectBehavior
     
     function it_renders_sub_templates()
     {
-        $path = self::fixturesPath() . 'static-body.html.tpl';
+        $path = Spec::fixturesPath() . 'static-body.html.tpl';
         $actual = $this->setContent("{{$path}}")->render()->getContent();
         $actual->shouldContain('Hello Static');
     }

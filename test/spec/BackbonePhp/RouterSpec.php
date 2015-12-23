@@ -3,6 +3,7 @@
 namespace spec\BackbonePhp;
 
 use PhpSpec\ObjectBehavior;
+use spec\Spec;
 
 use BackbonePhp\Config;
 use BackbonePhp\Request;
@@ -13,26 +14,11 @@ use PHPUnit_Framework_TestCase as Assertions;
 class RouterSpec extends ObjectBehavior
 {
 
-    protected static function rootPath()
-    {
-        return dirname(dirname(dirname(__DIR__))) . '/';
-    }
-    
-    protected static function testsPath()
-    {
-        return dirname(dirname(__DIR__)) . '/';
-    }
-    
-    protected static function fixturesPath()
-    {
-        return dirname(dirname(__DIR__)) . '/fixtures/';
-    }
-    
     protected function setConfig()
     {
         $config = new Config();
-        $config->load(self::fixturesPath() . 'router-config.json');
-        $config->set('fileBase', self::rootPath());
+        $config->load(Spec::fixturesPath() . 'router-config.json');
+        $config->set('fileBase', Spec::rootPath());
         $this->config = $config;
     }
     

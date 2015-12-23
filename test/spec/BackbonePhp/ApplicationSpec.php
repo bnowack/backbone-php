@@ -4,13 +4,12 @@ namespace spec\BackbonePhp;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
+use spec\Spec;
+
+use BackbonePhp\Request;
 
 class ApplicationSpec extends ObjectBehavior
 {
-    
-    protected static function testsPath() {
-        return dirname(dirname(__DIR__)) . '/';
-    }
     
     function it_is_initializable()
     {
@@ -36,14 +35,14 @@ class ApplicationSpec extends ObjectBehavior
         
     public function it_loads_a_config_file()
     {
-        $this->setConfig('fileBase', self::testsPath());
+        $this->setConfig('fileBase', Spec::testsPath());
         $this->loadConfig('fixtures/config-1.json')->shouldReturn($this);
         $this->getConfig('foo')->shouldReturn('bar');
     }
     
     function it_throws_an_exception_when_loading_a_non_existing_or_invalid_config_file()
     {
-        $this->setConfig('fileBase', self::testsPath());
+        $this->setConfig('fileBase', Spec::testsPath());
         $this->shouldThrow('\BackbonePhp\Exception\FileNotFoundException')->duringLoadConfig('fixtures/does-not-exist.json');
         $this->shouldThrow('\BackbonePhp\Exception\InvalidJsonException')->duringLoadConfig('fixtures/invalid-json.txt');
     }
