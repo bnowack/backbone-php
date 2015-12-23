@@ -90,8 +90,12 @@ class Request
             'files' => (object) $_FILES,
             'server' => (object) $_SERVER
         ];
+        // extract path
         $webBase = $this->config->get('webBase', '/');
-        $path = '/' . ltrim(preg_replace('/^' . preg_quote($webBase, '/') . '/', '', $this->getEnvironmentVariable('server', 'REQUEST_URI')), '/');
+        $webBaseRegex = '/^' . preg_quote($webBase, '/') . '/';
+        $requestUri = $this->getEnvironmentVariable('server', 'REQUEST_URI') ?: '/';
+        $trimmedPath = ltrim(preg_replace($webBaseRegex, '', $requestUri), '/'); 
+        $path = '/' . $trimmedPath;
         $this->setPath($path);
         return $this;
     }
