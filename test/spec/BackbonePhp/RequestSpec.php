@@ -41,4 +41,17 @@ class RequestSpec extends ObjectBehavior
         $this->setPath('/foo/bar/baz.html?a=b')->get('pathSections')->shouldReturn(["foo", "bar", "baz"]);
     }
     
+    function it_extracts_information_from_environment_path()
+    {
+        $this->config->set('webBase', '/foo/');
+        $env = (object)[
+            'server' => (object) [
+                'REQUEST_URI' => '/foo/bar?baz=bat'
+            ]
+        ];
+        $this->initializeFromEnvironment($env)->shouldReturn($this);
+        $this->get('cleanPath')->shouldReturn('/bar');
+        $this->get('arguments')->baz->shouldReturn('bat');
+    }
+    
 }
