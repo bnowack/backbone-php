@@ -80,6 +80,7 @@ class Config
                 $this->data->$name->$subKey = $subValue;
             }
         }
+        return $this;
     }
 
 }

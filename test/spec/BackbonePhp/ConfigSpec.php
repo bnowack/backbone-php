@@ -35,6 +35,11 @@ class ConfigSpec extends ObjectBehavior
         $this->get('object')->foo->shouldReturn('bar');
     }
     
+    public function it_merges_options()
+    {
+        $this->set('foo', ['bar'])->merge('foo', ['baz'])->get('foo')->shouldReturn(['bar', 'baz']);
+    }
+    
     public function it_combines_loaded_config_options()
     {
         $this->load(Spec::fixturesPath() . 'config-1.json', array('permissions'))->shouldReturn($this);
