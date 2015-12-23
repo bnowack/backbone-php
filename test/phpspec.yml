@@ -1,4 +1,15 @@
 formatter.name: pretty
+extensions:
+    - PhpSpec\Extension\CodeCoverageExtension
 suites:
     default:
         src_path: ../src
+code_coverage:
+    whitelist:
+        - ../src
+    format:
+        - html
+        - clover
+    output:
+        html: reports/coverage
+        clover: reports/coverage/coverage.xml
