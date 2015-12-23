@@ -88,7 +88,7 @@ class Request
             'post' => (object) $_POST,
             'cookie' => (object) $_COOKIE,
             'files' => (object) $_FILES,
-            'server' => (object) $_SERVER
+            'server' => isset($_SERVER) ? (object) $_SERVER : (object)[]
         ];
         // extract path
         $webBase = $this->config->get('webBase', '/');
