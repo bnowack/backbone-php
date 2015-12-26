@@ -16,6 +16,15 @@ class ResponseSpec extends ObjectBehavior
     {
         $this->setHeader('Content-Type', 'application/json')->shouldReturn($this);
         $this->getHeader('Content-Type')->shouldReturn('application/json');
+        $this->getHeader('unknown')->shouldReturn(null);
+    }
+    
+    function it_sets_the_content_type()
+    {
+        $this
+            ->setType('application/json')
+            ->getHeader('Content-Type')->shouldReturn('application/json')
+        ;
     }
     
     function it_finds_a_header_case_insensitively()
@@ -69,6 +78,30 @@ class ResponseSpec extends ObjectBehavior
         });
         $this->sendBody()->shouldReturn($this);
         ob_end_flush();
+    }
+    
+    public function it_sets_a_cookie()
+    {
+        // not fully testable at spec level
+        $cookie = (object) [
+            'name' => 'foo',
+            'value' => 'bar',
+            'path' => '/'
+        ];
+        $this->setCookie($cookie)->shouldReturn($this);
+        $this->sendHeaders()->shouldReturn($this);
+    }
+    
+    public function it_sends_cookies()
+    {
+        // not fully testable at spec level
+        $cookie = (object) [
+            'name' => 'foo',
+            'value' => 'bar',
+            'path' => '/'
+        ];
+        $this->setCookie($cookie)->shouldReturn($this);
+        $this->sendCookie($cookie)->shouldReturn($this);
     }
     
 }

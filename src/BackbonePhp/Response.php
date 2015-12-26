@@ -57,6 +57,30 @@ class Response
     }
     
     /**
+     * Sets the content type header
+     * 
+     * @param string $contentType Content Type
+     * @return \BackbonePhp\Response Response instance
+     */
+    public function setType($contentType)
+    {
+        $this->setHeader('Content-Type', $contentType);
+        return $this;
+    }
+    
+    /**
+     * Adds the provided cookie to the response
+     * 
+     * @param stdClass $cookie Cookie object with properties name, value, expire, path
+     * @return \BackbonePhp\Response Response instance
+     */
+    public function setCookie($cookie)
+    {
+        $this->cookies[] = $cookie;
+        return $this;
+    }
+    
+    /**
      * Returns a response header's value
      * 
      * @param str $name Header name
@@ -76,7 +100,7 @@ class Response
      * Sets the response body
      * 
      * @param mixed $body Response body as array, object, or string
-     * @return \BackbonePhp\Response response instance
+     * @return \BackbonePhp\Response Response instance
      */
     public function setBody($body)
     {
@@ -97,23 +121,49 @@ class Response
     /**
      * Sends the response cookies and headers
      * 
-     * @return \BackbonePhp\Response response instance
+     * @return \BackbonePhp\Response Response instance
      */
     public function sendHeaders()
     {
-        header("$this->protocol $this->code");
-        // cookies
-        foreach ($this->cookies as $cookie) {
-            setCookie($cookie->name, $cookie->value, $cookie->expire, $cookie->path);
+        if (!headers_sent()) {// avoid "headers sent" warnings
+            header("$this->protocol $this->code");
+            // cookies
+            foreach ($this->cookies as $cookie) {
+                $this->sendCookie($cookie);
+            }
+            // headers
+            foreach ($this->headers as $headerName => $values) {
+                if (!is_array($values)) {
+                    $values = array($values);
+                }
+                foreach ($values as $value) {
+                    header("$headerName: $value");
+                }
+            }
         }
-        // headers
-        foreach ($this->headers as $headerName => $values) {
-            if (!is_array($values)) {
-                $values = array($values);
-            }
-            foreach ($values as $value) {
-                header("$headerName: $value");
-            }
+        return $this;
+    }
+    
+    /**
+     * Sends headers for the given cookie
+     * 
+     * @param stdClass $cookie Cookie object with properties name, value, expire, path
+     * @return \BackbonePhp\Response Response instance
+     */
+    public function sendCookie($cookie)
+    {
+        if (!headers_sent()) {
+            $name = $cookie->name;
+            $value = $cookie->value;
+            $expire = isset($cookie->expire)
+                ? $cookie->expire
+                : time() + (3600 * 24 * 30) // 30 days
+            ;
+            $path = isset($cookie->path)
+                ? $cookie->path
+                : $this->config->get('webBase', '/')
+            ;
+            setCookie($name, $value, $expire, $path);
         }
         return $this;
     }
@@ -121,7 +171,7 @@ class Response
     /**
      * Sends the response body
      * 
-     * @return \BackbonePhp\Response response instance
+     * @return \BackbonePhp\Response Response instance
      */
     public function sendBody()
     {
