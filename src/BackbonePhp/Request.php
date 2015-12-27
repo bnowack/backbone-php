@@ -28,7 +28,7 @@ class Request
     /**
      * @var Array Request headers
      */
-    protected $headers;         
+    protected $headers;
     
     /**
      * @var string Request method, e.g. GET
