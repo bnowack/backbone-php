@@ -49,6 +49,35 @@ class ControllerSpec extends ObjectBehavior
         $this->handleTemplateRouteRequest($request, $response, $route)->shouldReturn($this);
     }
     
+    public function it_support_response_code_and_type_in_template_requests()
+    {
+        // config
+        $config = new Config();
+        $config->set('fileBase', Spec::rootPath());
+        $this->config = $config;
+        
+        $request = new Request();
+        $response = new Response();
+        
+        $config->set('appTitle', 'test');
+        $request->setPath('/test');
+        
+        $route = (object)[
+            "model" => (object)[
+                "pageTemplate" => "/test/fixtures/index.html.tpl",
+                "pageTitle" => 'test',
+                "responseType" => 'application/test',
+                "responseCode" => 123,
+            ],
+            "path" => "/test",
+            "type" => "template",
+            "template" => "/test/fixtures/static-body.html.tpl"
+        ];
+        $this->handleTemplateRouteRequest($request, $response, $route)->shouldReturn($this);
+        Assertions::assertEquals('application/test', $response->getHeader('Content-Type'), 'should have specified content type');
+        Assertions::assertEquals('123', $response->getCode(), 'should have specified response code');
+    }
+    
     public function it_adds_the_app_title_to_the_page_title()
     {
         // init
