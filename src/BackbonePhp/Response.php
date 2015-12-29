@@ -132,14 +132,30 @@ class Response
                 $this->sendCookie($cookie);
             }
             // headers
-            foreach ($this->headers as $headerName => $values) {
-                if (!is_array($values)) {
-                    $values = array($values);
-                }
-                foreach ($values as $value) {
-                    header("$headerName: $value");
-                }
+            foreach ($this->headers as $headerName => $value) {
+                $this->sendHeader($headerName, $value);
             }
+        }
+        return $this;
+    }
+    
+    /**
+     * Sends a single header
+     * 
+     * Supports value array for repeated headers
+     * 
+     * @param string $name Header name
+     * @param string|array $value Header value or values
+     * @return \BackbonePhp\Response Response instance
+     */
+    public function sendHeader($name, $value)
+    {
+        $values = is_array($value)
+            ? $value
+            : [$value]
+        ;
+        foreach ($values as $value) {
+            header("$name: $value");
         }
         return $this;
     }
