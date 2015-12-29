@@ -271,12 +271,11 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
     }
 
     /**
-     * @Then I should count :size entries for config option :name
+     * @Then config option :option should have entry :entry
      */
-    public function iShouldCountEntriesForConfigOption($size, $name)
+    public function configOptionShouldHaveEntry($option, $entry)
     {
-        $actual = count($this->application->getConfig($name));
-        Assertions::assertEquals(intval($size), $actual);
+        Assertions::assertObjectHasAttribute($entry, $this->application->getConfig($option));
     }    
      
 }
