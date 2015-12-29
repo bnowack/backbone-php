@@ -36,6 +36,17 @@ class TemplateSpec extends ObjectBehavior
         $this->setContent('1{0}3')->set(0, 2)->render()->getContent()->shouldReturn('123');
     }
     
+    function it_renders_complex_variables_as_json_strings()
+    {
+        $this
+            ->setContent('{a}{b}')
+            ->set('a', ['foo', 'bar'])
+            ->set('b', (object)['baz' => 'bat'])
+            ->render()->getContent()
+            ->shouldReturn('["foo","bar"]{"baz":"bat"}')
+        ;
+    }
+    
     function it_renders_nested_placeholders()
     {
         $this->setContent('1{foo}')

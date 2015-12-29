@@ -103,7 +103,7 @@ class Template
     {
         foreach ($this->data as $name => $value) {
             if (!is_string($value) && !is_numeric($value)) {
-                $value = print_r($value, true);
+                $value = json_encode($value, JSON_PRETTY_PRINT && JSON_FORCE_OBJECT);
             }
             $this->content = str_replace("{{$name}}", $value, $this->content);
         }
