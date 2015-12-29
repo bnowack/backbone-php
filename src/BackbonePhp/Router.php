@@ -97,14 +97,16 @@ class Router
      */
     protected function getRouteType($handlerString)
     {
+        $result = null;
         // class + method detection => controller call
         if (preg_match('/.+::.+/', $handlerString)) {
-            return 'call';
+            $result = 'call';
         }
         // path with filename extension
         else if (preg_match('/\/.+\./', $handlerString)) {
-            return 'template';
+            $result = 'template';
         }
+        return $result;
     }
     
     /**
