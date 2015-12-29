@@ -1,5 +1,4 @@
 <?php
-namespace BackbonePhp\Behat;
 
 use Behat\Behat\Context\Context;
 use Behat\Behat\Context\SnippetAcceptingContext;
@@ -12,7 +11,6 @@ use Behat\MinkExtension\Context\MinkContext;
 use PHPUnit_Framework_TestCase as Assertions;
 
 use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
-use RuntimeException;
 
 /**
  * Defines application features from the specific context.
