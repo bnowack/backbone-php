@@ -73,24 +73,18 @@ class ControllerSpec extends ObjectBehavior
             ]
         ];
         $this->handleTemplateRouteRequest($request, $response, $route);
-        $actual1 = $response->getBody();
-        $expected1 = '<title>page - app</title>';
-        Assertions::assertContains($expected1, $actual1, 'should have page title and app title');
+        Assertions::assertContains('<title>page - app</title>', $response->getBody(), 'should have page title and app title');
 
         // request with empty page title
         $route->model->pageTitle = null;
         $this->handleTemplateRouteRequest($request, $response, $route);
-        $actual2 = $response->getBody();
-        $expected2 = '<title>app</title>';
-        Assertions::assertContains($expected2, $actual2, 'should have app title only');
+        Assertions::assertContains('<title>app</title>', $response->getBody(), 'should have app title only');
 
         // request with empty app title
         $route->model->pageTitle = 'page';
         $config->set('appTitle', null);
         $this->handleTemplateRouteRequest($request, $response, $route);
-        $actual3 = $response->getBody();
-        $expected3 = '<title>page</title>';
-        Assertions::assertContains($expected3, $actual3, 'should have page title only');
+        Assertions::assertContains('<title>page</title>', $response->getBody(), 'should have page title only');
     }
     
 }
