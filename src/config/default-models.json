@@ -1,5 +1,14 @@
 {
     "models": {
+        "404": {
+            "pageTemplate": "/src/templates/page.html.tpl",
+            "appTitle": "BackbonePHP",
+            "pageTitle": "Page not found",
+            "responseCode": 404,
+            "routes": {
+                ".*": "/src/templates/404.html.tpl"
+            }
+        },
         "status": {
             "routes": {
                 "/status": "\\BackbonePhp\\Controller\\StatusController::handleStatusRequest"
