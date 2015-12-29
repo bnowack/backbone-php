@@ -1,8 +1,9 @@
 <?php
 
-namespace spec\BackbonePhp;
+namespace spec\BackbonePhp\Controller;
 
 use PhpSpec\ObjectBehavior;
+use spec\Spec;
 
 use BackbonePhp\Config;
 use BackbonePhp\Request;
@@ -13,14 +14,9 @@ use PHPUnit_Framework_TestCase as Assertions;
 class ControllerSpec extends ObjectBehavior
 {
     
-    protected static function rootPath()
-    {
-        return dirname(dirname(dirname(__DIR__))) . '/';
-    }
-    
     public function it_is_initializable()
     {
-        $this->shouldHaveType('BackbonePhp\Controller');
+        $this->shouldHaveType('BackbonePhp\Controller\Controller');
     }
     
     public function it_has_a_config_object()
@@ -32,7 +28,7 @@ class ControllerSpec extends ObjectBehavior
     {
         // config
         $config = new Config();
-        $config->set('fileBase', self::rootPath());
+        $config->set('fileBase', Spec::rootPath());
         $this->config = $config;
         
         $request = new Request();
@@ -57,7 +53,7 @@ class ControllerSpec extends ObjectBehavior
     {
         // init
         $config = new Config();
-        $config->set('fileBase', self::rootPath());
+        $config->set('fileBase', Spec::rootPath());
         $this->config = $config;
         
         $request = new Request();

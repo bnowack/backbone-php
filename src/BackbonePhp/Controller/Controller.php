@@ -1,6 +1,9 @@
 <?php
 
-namespace BackbonePhp;
+namespace BackbonePhp\Controller;
+
+use BackbonePhp\Config;
+use BackbonePhp\Template;
 
 /**
  * BackbonePHP Controller Class
