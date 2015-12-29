@@ -103,6 +103,9 @@ BackbonePHP is a micro-framework for single-page applications with:
                 "/blog/my-api": "MyNamespace\Post\BlogApi::handleIndexRequest"
             },
             "fields": {
+                "id": {
+                    "type": "integer"
+                },
                 "slug": {
                     "type": "string",
                     "format": "[0-9]{4}-[0-9]{2}-[0-9]{2}-.{1,128}",
