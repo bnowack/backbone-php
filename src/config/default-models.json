@@ -13,6 +13,14 @@
             "routes": {
                 "/status": "\\BackbonePhp\\Controller\\StatusController::handleStatusRequest"
             }
+        },
+        "home": {
+            "pageTemplate": "/src/templates/page.html.tpl",
+            "appTitle": "BackbonePHP",
+            "pageTitle": "Welcome",
+            "routes": {
+                "/": "/src/templates/welcome.html.tpl"
+            }
         }
     }
 }

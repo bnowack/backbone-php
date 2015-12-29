@@ -8,6 +8,7 @@ Feature: Front-Controller
         When I am on "/"
         Then I should get a successful response with format "html"
         And I should see "Welcome - BackbonePHP" in the title element
+        And I should see "Welcome to BackbonePHP" in the body element
 
     @ui
     Scenario: Config-free 404 page
