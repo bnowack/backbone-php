@@ -184,6 +184,16 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
     }
     
     /**
+     * @Then I should get the response code :code
+     */
+    public function iShouldGetTheResponseCode($code)
+    {
+        $session = $this->getSession();
+        $actual = $session->getStatusCode();
+        Assertions::assertEquals($code, $actual, 'The response code should be ' . $code);
+    }    
+    
+    /**
      * @Then I should get a successful response
      */
     public function iShouldGetASuccessfulResponse()
@@ -202,6 +212,18 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
         $this->iShouldGetASuccessfulResponse();
         $actual = $this->getResponseHeaders('content-type')[0];
         Assertions::assertRegExp("~$format~i", $actual, "Response type should match '$format'");
+    }
+    
+    /**
+     * @Then I should see :value in the :tag element
+     */
+    public function iShouldSeeInTheElement($value, $tag)
+    {
+        $page = $this->getSession()->getPage();
+        $el = $page->find('css', $tag);
+        Assertions::assertNotNull($el);
+        $actual = $el->getText();
+        Assertions::assertEquals($value, $actual);
     }
     
     /**
