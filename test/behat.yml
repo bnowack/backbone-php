@@ -20,6 +20,11 @@ default:
         html:
             output_path: %paths.base%/reports/behat
     suites:
+        build:
+            paths:    [ %paths.base%/features ]
+            contexts: [ FeatureContext ]
+            httpd:    { port: 8888, root: %paths.base%/../, router: router.php }
+            ghostd:   { port: 8643 }
         ui:
             paths:    [ %paths.base%/features ]
             contexts: [ UiContext ]
