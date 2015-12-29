@@ -16,9 +16,13 @@
                 "/test/plain-call": "\\spec\\BackbonePhp\\RouterSpecController::handlePlainStaticCall",
                 "/test/(:year)": "\\spec\\BackbonePhp\\RouterSpecController::handlePlainDynamicCall",
                 "/test/invalid/class": "NonExistingController::handleCall",
-                "/test/invalid/method": "\\spec\\BackbonePhp\\RouterSpecController::handleInvalidCall"
+                "/test/invalid/method": "\\spec\\BackbonePhp\\RouterSpecController::handleInvalidCall",
+                "/test/resource/(:id)": "\\spec\\BackbonePhp\\RouterSpecController::handleIdCall"
             },
             "fields": {
+                "id": {
+                    "type": "integer"
+                },
                 "year": {
                     "type": "integer",
                     "format": "[0-9]{4}"

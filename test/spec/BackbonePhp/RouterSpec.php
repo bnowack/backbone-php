@@ -83,18 +83,18 @@ class RouterSpec extends ObjectBehavior
         $request = new Request($this->object->getWrappedObject()->config);
         $response = new Response($this->object->getWrappedObject()->config);
         
-        // controller request
+        // controller request (year)
         $request->setPath('/test/2015');
         $this->dispatchRequest($request, $response);
         $actual1 = $response->getBody();
         $expected1 = 'Dynamic 2015';
         Assertions::assertEquals($expected1, $actual1, 'should be parametrised response from controller');
         
-        // controller request
-        $request->setPath('/test/2016');
+        // controller request (id)
+        $request->setPath('/test/resource/12');
         $this->dispatchRequest($request, $response);
         $actual2 = $response->getBody();
-        $expected2 = 'Dynamic 2016';
+        $expected2 = '12';
         Assertions::assertEquals($expected2, $actual2, 'should be parametrised response from controller');
     }
     
@@ -127,6 +127,12 @@ class RouterSpecController {
     {
         $year = $route->params->year;
         $response->setBody("Dynamic $year");
+    }
+    
+    public function handleIdCall(Request $request, Response $response, $route)
+    {
+        $id = $route->params->id;
+        $response->setBody($id);
     }
     
 }
