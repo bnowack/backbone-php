@@ -9,8 +9,6 @@ use Behat\Behat\Tester\Exception\PendingException;
 
 use PHPUnit_Framework_TestCase as Assertions;
 
-use BackbonePhp\Behat\ProjectContext;
-
 /**
  * Defines application features from the specific context.
  */
