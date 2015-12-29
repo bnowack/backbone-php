@@ -205,6 +205,36 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
     }
     
     /**
+     * @Then I should get JSON
+     */
+    public function iShouldGetJson()
+    {
+        $actual = $this->getSession()->getPage()->getContent();
+        Assertions::assertJson($actual, 'Response content should be JSON');
+    }
+    
+    /**
+     * @Then I should see a JSON field :name
+     */
+    public function iShouldSeeAJsonField($name)
+    {
+        $this->iShouldGetJson();
+        $data = json_decode($this->getSession()->getPage()->getContent(), true);
+        Assertions::assertArrayHasKey($name, $data);
+    }
+    
+    /**
+     * @Then I should see a JSON field :name with value :value
+     */
+    public function iShouldSeeAJsonFieldWithValue($name, $value)
+    {
+        $this->iShouldSeeAJsonField($name);
+        $data = json_decode($this->getSession()->getPage()->getContent(), true);
+        $actual = $data[$name];
+        Assertions::assertEquals($value, $actual);
+    }
+
+    /**
      * @Given an application object
      */
     public function anApplicationObject()

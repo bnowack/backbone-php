@@ -14,6 +14,7 @@ require_once $fileBase . 'vendor/autoload.php';
 // create and start the application
 (new BackbonePhp\Application())
     ->setConfig('fileBase', $fileBase)
+    ->loadConfig('vendor/bnowack/backbone-php/src/config/default-models.json')
     ->dispatchRequest()
     ->getResponse()
         ->sendHeaders()
