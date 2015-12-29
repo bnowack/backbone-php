@@ -30,6 +30,12 @@ class TemplateSpec extends ObjectBehavior
         $this->setContent('1{var}3')->set('var', 2)->render()->getContent()->shouldReturn('123');
     }
     
+    function it_renders_numeric_variable_names()
+    {
+        $this->setContent('1{0}3')->set(0, '2')->render()->getContent()->shouldReturn('123');
+        $this->setContent('1{0}3')->set(0, 2)->render()->getContent()->shouldReturn('123');
+    }
+    
     function it_renders_nested_placeholders()
     {
         $this->setContent('1{foo}')

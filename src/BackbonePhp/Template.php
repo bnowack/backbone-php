@@ -102,9 +102,6 @@ class Template
     protected function renderVariables()
     {
         foreach ($this->data as $name => $value) {
-            if (!is_string($name)) {
-                continue;
-            }
             if (!is_string($value) && !is_numeric($value)) {
                 $value = print_r($value, true);
             }
