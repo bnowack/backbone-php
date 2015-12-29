@@ -12,6 +12,10 @@ if (php_sapi_name() !== 'cli-server') {
     die('The router script is only available on the test server');
 }
 
+// Ensure time() is E_STRICT-compliant (optional, if specified in php.ini)
+if (function_exists('date_default_timezone_get')) {
+	date_default_timezone_set(@date_default_timezone_get());
+}
 // the base directory is 2 hops up from /test/router.php
 require_once dirname(__DIR__) . '/vendor/autoload.php';
 
