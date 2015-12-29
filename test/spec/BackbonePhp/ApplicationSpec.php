@@ -54,6 +54,7 @@ class ApplicationSpec extends ObjectBehavior
     
     public function it_creates_a_response()
     {
+        $this->getResponse()->shouldhaveType('BackbonePhp\Response');
         $this->dispatchRequest()->getResponse()->shouldhaveType('BackbonePhp\Response');
     }
     
