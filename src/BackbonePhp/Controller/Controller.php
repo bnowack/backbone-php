@@ -49,7 +49,10 @@ class Controller
             ->render()
             ->getContent()
         ;
-        $response->setBody($content);
+        $response
+            ->setCode(200)
+            ->setBody($content)
+        ;
         return $this;
     }
     

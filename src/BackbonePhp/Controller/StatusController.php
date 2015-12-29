@@ -23,6 +23,7 @@ class StatusController extends Controller
             "timestamp" => time()
         ];
         $response
+            ->setCode(200)
             ->setType('application/json')
             ->setBody($content)
         ;
