@@ -4,6 +4,7 @@ namespace BackbonePhp;
 
 use BackbonePhp\Exception\FileNotFoundException;
 use BackbonePhp\Exception\MethodNotFoundException;
+use BackbonePhp\Controller\Controller;
 
 /**
  * BackbonePHP Router Class
