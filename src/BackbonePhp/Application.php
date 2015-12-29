@@ -123,6 +123,11 @@ class Application
         return $this;
     }
     
+    /**
+     * Returns (or creates and returns) the application's response object
+     * 
+     * @return \BackbonePhp\Response $response Response instance
+     */
     public function getResponse()
     {
         if (!$this->response) {
