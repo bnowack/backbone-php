@@ -23,7 +23,7 @@ class StatusControllerSpec extends ObjectBehavior
     {
         $config = new Config();
         $config->set('fileBase', Spec::rootPath());
-        $config->load(Spec::rootPath() . 'src/BackbonePhp/config/default-models.json');
+        $config->load(Spec::rootPath() . 'src/config/default-models.json');
         $this->config = $config;
         
         $request = new Request();
