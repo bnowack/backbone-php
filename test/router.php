@@ -26,5 +26,9 @@ if (preg_match('/\.(png|jpg|jpe?g|gif|css|js|json|txt)$/i', $_SERVER["REQUEST_UR
     (new BackbonePhp\Application())
         ->setConfig('fileBase', dirname(__DIR__) . '/')
         ->loadConfig('test/fixtures/router-config.json')
+        ->dispatchRequest()
+        ->getResponse()
+            ->sendHeaders()
+            ->sendBody()
     ;
 }

@@ -12,4 +12,10 @@ $fileBase = dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/';
 require_once $fileBase . 'vendor/autoload.php';
 
 // create and start the application
-// ...
+(new BackbonePhp\Application())
+    ->setConfig('fileBase', $fileBase)
+    ->dispatchRequest()
+    ->getResponse()
+        ->sendHeaders()
+        ->sendBody()
+;
