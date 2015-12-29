@@ -80,15 +80,16 @@ class Template
      */
     public function render($maxIterations = 32, $iteration = 0)
     {
-        $oldContent = $this->content;
-        $this->renderVariables();
-        $this->renderSubTemplates();
-        $changed = $oldContent !== $this->content;
-        if ($changed && $iteration < $maxIterations) { // allow up to $maxIterations recursions for nested variables and templates
-            return $this->render($maxIterations, $iteration + 1);
-        } else {
-            return $this;
+        if (strpos($this->content, '{') !== false) {
+            $oldContent = $this->content;
+            $this->renderVariables();
+            $this->renderSubTemplates();
+            $changed = $oldContent !== $this->content;
+            if ($changed && $iteration < $maxIterations) { // allow up to $maxIterations recursions for nested variables and templates
+                return $this->render($maxIterations, $iteration + 1);
+            }
         }
+        return $this;
     }
     
     /**
