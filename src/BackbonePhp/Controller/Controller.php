@@ -41,6 +41,14 @@ class Controller
         $pageTemplate = $route->model->pageTemplate;
         $pageTitle = $this->getFullPageTitle($route);
         $bodyTemplate = $route->template;
+        $responseCode = isset($route->model->responseCode)
+            ? $route->model->responseCode
+            : 200
+        ;
+        $responseType = isset($route->model->responseType)
+            ? $route->model->responseType
+            : 'text/html; charset=UTF-8'
+        ;
         $content = (new Template($this->config))
             ->setContent("{{$pageTemplate}}")
             ->set('path', $request->get('resourcePath'))
@@ -50,7 +58,8 @@ class Controller
             ->getContent()
         ;
         $response
-            ->setCode(200)
+            ->setCode($responseCode)
+            ->setType($responseType)
             ->setBody($content)
         ;
         return $this;
