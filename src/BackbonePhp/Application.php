@@ -26,6 +26,21 @@ class Application
     protected $config;
     
     /**
+     * @var Request Request object  
+     */
+    public $request;
+    
+    /**
+     * @var Response Response object  
+     */
+    public $response;
+    
+    /**
+     * @var Router Router object  
+     */
+    protected $router;
+    
+    /**
      * Instantiates the application
      * 
      * @param Config $config Configuration object
@@ -33,6 +48,7 @@ class Application
     public function __construct($config = null)
     {
         $this->config = $config ?: new Config();
+        $this->router = new Router($this->config);
     }
     
     /**
@@ -88,4 +104,31 @@ class Application
         $this->config->load($this->config->get('fileBase') . $path, $mergeFields);
         return $this;
     }
+
+    /**
+     * Dispatches a client request
+     * 
+     * @param \BackbonePhp\Request $request Request object (optional)
+     * @param \BackbonePhp\Response $response Response object (optional)
+     * @return \BackbonePhp\Application Application instance
+     */
+    public function dispatchRequest($request = null, $response = null)
+    {
+        $this->request = $request ?: new Request($this->config);
+        if (!$request) {
+            $this->request->initializeFromEnvironment();
+        }
+        $this->response = $response ?: new Response($this->config);
+        $this->router->dispatchRequest($this->request, $this->response);
+        return $this;
+    }
+    
+    public function getResponse()
+    {
+        if (!$this->response) {
+            $this->response = new Response($this->config);
+        }
+        return $this->response;
+    }
+
 }

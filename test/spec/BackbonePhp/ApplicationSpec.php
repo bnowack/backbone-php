@@ -47,4 +47,14 @@ class ApplicationSpec extends ObjectBehavior
         $this->shouldThrow('\BackbonePhp\Exception\InvalidJsonException')->duringLoadConfig('fixtures/invalid-json.txt');
     }
     
+    public function it_dispatches_a_request()
+    {
+        $this->dispatchRequest()->shouldReturn($this);
+    }
+    
+    public function it_creates_a_response()
+    {
+        $this->dispatchRequest()->getResponse()->shouldhaveType('BackbonePhp\Response');
+    }
+    
 }
