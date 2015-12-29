@@ -1,0 +1,9 @@
+{
+    "models": {
+        "status": {
+            "routes": {
+                "/status": "\\BackbonePhp\\Controller\\StatusController::handleStatusRequest"
+            }
+        }
+    }
+}
