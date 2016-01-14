@@ -28,7 +28,6 @@ class ControllerSpec extends ObjectBehavior
     {
         // config
         $config = new Config();
-        $config->set('fileBase', Spec::rootPath());
         $this->config = $config;
         
         $request = new Request();
@@ -53,7 +52,6 @@ class ControllerSpec extends ObjectBehavior
     {
         // config
         $config = new Config();
-        $config->set('fileBase', Spec::rootPath());
         $this->config = $config;
         
         $request = new Request();
@@ -82,7 +80,6 @@ class ControllerSpec extends ObjectBehavior
     {
         // init
         $config = new Config();
-        $config->set('fileBase', Spec::rootPath());
         $this->config = $config;
         
         $request = new Request();
@@ -90,6 +87,7 @@ class ControllerSpec extends ObjectBehavior
         
         // request with appended app title
         $config->set('appTitle', 'app');
+        $config->set('pageTitleDelimiter', ' :: ');
         $request->setPath('/test');
         
         $route = (object)[
@@ -102,7 +100,7 @@ class ControllerSpec extends ObjectBehavior
             ]
         ];
         $this->handleTemplateRouteRequest($request, $response, $route);
-        Assertions::assertContains('<title>page - app</title>', $response->getBody(), 'should have page title and app title');
+        Assertions::assertContains('<title>page :: app</title>', $response->getBody(), 'should have page title and app title');
 
         // request with empty page title
         $route->model->pageTitle = null;

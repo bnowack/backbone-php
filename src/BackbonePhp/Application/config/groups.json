@@ -1,0 +1,10 @@
+{
+    "groups": {
+        "*": {
+            "permissions": []
+        },
+        "admins": {
+            "permissions": ["*"]
+        }
+    }
+}

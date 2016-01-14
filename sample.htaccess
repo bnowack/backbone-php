@@ -10,8 +10,8 @@ RedirectMatch 404 /bin
 # Hide the project's data directory
 RedirectMatch 404 /data
 
-# Hide server configuration files
-RedirectMatch 404 config/server(\..+)?\.json
+# Hide configuration files
+RedirectMatch 404 /config
 
 # Redirect any other non-file requests to the front controller.
 RewriteCond %{REQUEST_FILENAME} !-f

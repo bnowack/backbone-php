@@ -11,12 +11,12 @@
         },
         "status": {
             "routes": {
-                "/status": "\\BackbonePhp\\Controller\\StatusController::handleStatusRequest"
+                "/status": "\\BackbonePhp\\Status\\StatusController::handleStatusRequest"
             }
         },
         "config": {
             "routes": {
-                "/config": "\\BackbonePhp\\Controller\\ConfigController::handleConfigRequest"
+                "/config": "\\BackbonePhp\\Config\\ConfigController::handleFrontendConfigRequest"
             }
         },
         "home": {

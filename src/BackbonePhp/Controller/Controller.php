@@ -81,7 +81,7 @@ class Controller
             ? $route->model->appTitle
             : $this->config->get('appTitle', '')
         ;
-        $titleGlue = $this->config->get('pageTitleDelimiter', ' - ');
+        $titleGlue = $this->config->get('pageTitleDelimiter');
         return ($pageTitle && $appTitle)
             ? $pageTitle . $titleGlue . $appTitle
             : $pageTitle . $appTitle

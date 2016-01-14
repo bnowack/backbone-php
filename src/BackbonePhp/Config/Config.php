@@ -84,5 +84,22 @@ class Config
         }
         return $this;
     }
+    
+    /**
+     * Combined all public and frontend-relevant config options into a single object
+     * 
+     * @return \stdClass Front-end configuration object
+     */
+    public function getFrontendData()
+    {
+        $result = (object)[];
+        foreach ($this->data as $key => $value) {
+            if (in_array($key, array('server', 'nodes', 'groups', 'permissions'))) {
+                continue;
+            }
+            $result->$key = $value;
+        }
+        return $result;
+    }
 
 }

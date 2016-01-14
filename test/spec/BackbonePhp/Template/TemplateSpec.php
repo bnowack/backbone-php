@@ -60,7 +60,8 @@ class TemplateSpec extends ObjectBehavior
     
     function it_sets_default_template_variables()
     {
-        $this->setContent('{base}')->render()->getContent()->shouldReturn('/');
+        $this->beConstructedWith(Spec::getDevConfig());
+        $this->setContent('{appBase}')->render()->getContent()->shouldReturn('/');
     }
     
     function it_renders_sub_templates()

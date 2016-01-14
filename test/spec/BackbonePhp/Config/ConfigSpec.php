@@ -57,4 +57,22 @@ class ConfigSpec extends ObjectBehavior
         $this->get('undefined', 'test')->shouldReturn('test');
     }
     
+    public function it_generates_a_frontend_config_object()
+    {
+        $actual = $this
+            ->set('test', 'public')
+            ->set('models', 'public')
+            ->set('server', 'not public')
+            ->set('nodes', 'not public')
+            ->set('groups', 'not public')
+            ->set('permissions', 'not public')
+            ->getFrontendData()
+        ;
+        $expected = (object)[
+            'test' => 'public',
+            'models' => 'public'
+        ];
+        $actual->shouldHaveType('\stdClass');
+        $actual->shouldBeLike($expected);
+    }
 }
