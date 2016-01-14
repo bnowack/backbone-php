@@ -89,6 +89,13 @@ BackbonePHP is a micro-framework for single-page applications with:
 
 ## Models with routes
 
+        "products": {
+            "routes": {
+                "/products"         : "My/Namespace/ProductCollection::list",
+                "/products/:id"     : "My/Namespace/Product::show",
+                "/products/help"    : "My/Namespace/templates/product-help.html.tpl"
+            }
+        },
         "posts": {
             "classPath": "/src/MyNamespace/Post/",
             "resourceType": "http://schema.org/Post",
@@ -99,7 +106,7 @@ BackbonePHP is a micro-framework for single-page applications with:
                 "/posts/:id": "resource",
                 "/blog(/:year)(/:month)(/:day)": "collection-alias",
                 "/blog/:slug": "resource-alias",
-                "/blog/about": "/src/MyNamespace/Post/templates/blog-about.html",
+                "/blog/about": "/src/MyNamespace/Post/templates/blog-about.html.tpl",
                 "/blog/my-api": "MyNamespace\Post\BlogApi::handleIndexRequest"
             },
             "fields": {
