@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,sBAAsB",
+"sources": ["../scss/application.scss"],
+"names": [],
+"file": "application.css"
+}
