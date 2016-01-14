@@ -7,7 +7,7 @@ suites:
         src_path: ../src
 code_coverage:
     whitelist:
-        - ../src
+        - ../src/BackbonePhp
     format:
         - html
         - clover
