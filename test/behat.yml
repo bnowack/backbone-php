@@ -16,6 +16,9 @@ default:
             print_args: true
             print_outp: true
             loop_break: true
+        Vanare\BehatCucumberJsonFormatter\Extension:
+            filename: behat.json
+            outputDir: %paths.base%/reports/behat
     formatters: 
         html:
             output_path: %paths.base%/reports/behat

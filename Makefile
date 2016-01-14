@@ -24,9 +24,9 @@ behat-active: separator
 	@cd test && $(BEHAT_BIN) --suite=active -f pretty && cd ../
 
 behat-build: separator
-	@echo "Running Behat features from 'build' suite and creating HTML report"
+	@echo "Running Behat features from 'build' suite and creating HTML and JSON reports"
 	@make separator 
-	@cd test && $(BEHAT_BIN) --suite=build -f pretty -f html && cd ../
+	@cd test && $(BEHAT_BIN) --suite=build -f pretty -f html -f cucumber_json && cd ../
 
 spec-build: separator
 	@echo "Running all PHPSpec files"
