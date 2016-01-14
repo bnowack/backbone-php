@@ -14,6 +14,7 @@ help:
 	@echo "  make bdd-report .............. Run all Behat features and PHPSpec files and create Reports"
 
 	@echo "  make www-start ............... Start test web server"
+	@echo "  make scss-start .............. Start SCSS watcher"
 
 separator:
 	@echo "-----------------------------------------------------------------------"
@@ -51,3 +52,6 @@ bdd-report:
 
 www-start:
 	php -S localhost:8889 -t ./ test/router.php
+
+scss-start:
+	php vendor/bnowack/scss-watcher/scripts/watch.php --path=src
