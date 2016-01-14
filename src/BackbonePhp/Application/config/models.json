@@ -1,12 +1,12 @@
 {
     "models": {
         "404": {
-            "pageTemplate": "/src/templates/page.html.tpl",
+            "pageTemplate": "/src/BackbonePhp/Application/templates/page.html.tpl",
             "appTitle": "BackbonePHP",
             "pageTitle": "Page not found",
             "responseCode": 404,
             "routes": {
-                ".*": "/src/templates/404.html.tpl"
+                ".*": "/src/BackbonePhp/Application/templates/404.html.tpl"
             }
         },
         "status": {
@@ -20,11 +20,11 @@
             }
         },
         "home": {
-            "pageTemplate": "/src/templates/page.html.tpl",
+            "pageTemplate": "/src/BackbonePhp/Application/templates/page.html.tpl",
             "appTitle": "BackbonePHP",
             "pageTitle": "Welcome",
             "routes": {
-                "/": "/src/templates/welcome.html.tpl"
+                "/": "/src/BackbonePhp/Application/templates/welcome.html.tpl"
             }
         }
     }
