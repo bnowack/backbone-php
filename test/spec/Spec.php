@@ -10,17 +10,18 @@ class Spec
 
     public static function rootPath()
     {
-        return dirname(dirname(__DIR__)) . '/';
+        return BACKBONEPHP_DIR;
     }
     
     public static function testsPath()
     {
-        return dirname(__DIR__) . '/';
+        return BACKBONEPHP_DIR . 'test/';
     }
     
     public static function fixturesPath()
     {
-        return dirname(__DIR__) . '/fixtures/';
+        return BACKBONEPHP_DIR . 'test/fixtures/';
+    }
     }
     
 }
