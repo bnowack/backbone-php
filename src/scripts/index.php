@@ -1,9 +1,7 @@
 <?php
 
-// Ensure time() is E_STRICT-compliant (optional, if specified in php.ini)
-if (function_exists('date_default_timezone_get')) {
-	date_default_timezone_set(@date_default_timezone_get());
-}
+// Ensure time() is E_STRICT-compliant
+date_default_timezone_set(@date_default_timezone_get());
 
 // file system base directory, derived from `/vendor/bnowack/backbone-php/src/scripts/index.php`
 $fileBase = dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/';
