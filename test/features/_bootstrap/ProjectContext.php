@@ -12,6 +12,8 @@ use PHPUnit_Framework_TestCase as Assertions;
 
 use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
 
+use BackbonePhp\Application\Application;
+
 /**
  * Defines application features from the specific context.
  */
@@ -74,7 +76,7 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
             while (!$up && $attempts < 20);
             if (!$up) {
                 self::stopProcess(self::$httpdPid);// just in case it *did* start but did not respond in time
-                throw new RuntimeException("Could not start web server at $host:$port");
+                throw new \RuntimeException("Could not start web server at $host:$port");
             }
         }
     }
@@ -118,7 +120,7 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
             while (!$up && $attempts < 50);
             if (!$up) {
                 self::stopProcess(self::$ghostDriverPid);// just in case it *did* start but did not respond in time
-                throw new RuntimeException("Could not start ghost driver at $host:$port");
+                throw new \RuntimeException("Could not start ghost driver at $host:$port");
             }
         }
     }
@@ -261,7 +263,7 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function anApplicationObject()
     {
-        $this->application = new \BackbonePhp\Application();
+        $this->application = new Application();
     }
     
     /**
