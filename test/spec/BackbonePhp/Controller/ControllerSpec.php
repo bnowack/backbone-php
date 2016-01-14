@@ -5,9 +5,9 @@ namespace spec\BackbonePhp\Controller;
 use PhpSpec\ObjectBehavior;
 use spec\Spec;
 
-use BackbonePhp\Config;
-use BackbonePhp\Request;
-use BackbonePhp\Response;
+use BackbonePhp\Config\Config;
+use BackbonePhp\Request\Request;
+use BackbonePhp\Response\Response;
 
 use PHPUnit_Framework_TestCase as Assertions;
 
@@ -21,7 +21,7 @@ class ControllerSpec extends ObjectBehavior
     
     public function it_has_a_config_object()
     {
-        $this->config->shouldHaveType('BackbonePhp\Config');
+        $this->config->shouldHaveType('BackbonePhp\Config\Config');
     }
     
     public function it_handles_a_template_request()

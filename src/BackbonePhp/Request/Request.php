@@ -1,8 +1,9 @@
 <?php
 
-namespace BackbonePhp;
+namespace BackbonePhp\Request;
 
 use BackbonePhp\Exception\UndefinedPropertyException;
+use BackbonePhp\Config\Config;
 
 /**
  * BackbonePHP Request Class
@@ -91,10 +92,10 @@ class Request
             'server' => isset($_SERVER) ? (object) $_SERVER : (object)[]
         ];
         // extract path
-        $webBase = $this->config->get('webBase', '/');
-        $webBaseRegex = '/^' . preg_quote($webBase, '/') . '/';
+        $appBase = $this->config->get('appBase', '/');
+        $appBaseRegex = '/^' . preg_quote($appBase, '/') . '/';
         $requestUri = $this->getEnvironmentVariable('server', 'REQUEST_URI') ?: '/';
-        $trimmedPath = ltrim(preg_replace($webBaseRegex, '', $requestUri), '/'); 
+        $trimmedPath = ltrim(preg_replace($appBaseRegex, '', $requestUri), '/'); 
         $path = '/' . $trimmedPath;
         $this->setPath($path);
         return $this;
@@ -115,7 +116,7 @@ class Request
     /**
      * Sets the request path and extracts request properties such as cleanPath, extension, etc.
      * 
-     * @param string $path Request path, excluding the webBase (such as "/myDir/"), with a trailing slash, e.g. "/blog/2015-12-24-merry-xmas.html?foo=bar"
+     * @param string $path Request path, excluding the appBase (such as "/myAppDir/"), with a trailing slash, e.g. "/blog/2015-12-24-merry-xmas.html?foo=bar"
      * @return \BackbonePhp\Request Request instance
      */
     public function setPath($path)

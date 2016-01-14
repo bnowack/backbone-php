@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\BackbonePhp;
+namespace spec\BackbonePhp\Request;
 
 use PhpSpec\ObjectBehavior;
 
@@ -8,7 +8,7 @@ class RequestSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('BackbonePhp\Request');
+        $this->shouldHaveType('BackbonePhp\Request\Request');
     }
     
     function it_sets_a_method()
@@ -41,7 +41,7 @@ class RequestSpec extends ObjectBehavior
         $this->setPath('/foo/bar/baz.html?a=b')->get('pathSections')->shouldReturn(["foo", "bar", "baz"]);
     }
     
-    function it_throws_an_exception_fo_invalid_accessors()
+    function it_throws_an_exception_for_invalid_accessors()
     {
         $this->shouldThrow('BackbonePhp\Exception\UndefinedPropertyException')->duringGet('invalid');
     }
@@ -67,7 +67,7 @@ class RequestSpec extends ObjectBehavior
     
     function it_extracts_information_from_environment_path()
     {
-        $this->config->set('webBase', '/foo/');
+        $this->config->set('appBase', '/foo/');
         $env = (object)[
             'server' => (object) [
                 'REQUEST_URI' => '/foo/bar?baz=bat'
@@ -80,7 +80,6 @@ class RequestSpec extends ObjectBehavior
     
     function it_extracts_repeated_arguments_as_array()
     {
-        $this->config->set('webBase', '/');
         $env = (object)[
             'server' => (object) [
                 'REQUEST_URI' => '/?foo=bar&foo=bar2&foo=bar3'

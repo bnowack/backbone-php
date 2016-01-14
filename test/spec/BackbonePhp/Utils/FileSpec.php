@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\BackbonePhp;
+namespace spec\BackbonePhp\Utils;
 
 use PhpSpec\ObjectBehavior;
 use spec\Spec;

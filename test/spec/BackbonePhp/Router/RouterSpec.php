@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\BackbonePhp;
+namespace spec\BackbonePhp\Router;
 
 use PhpSpec\ObjectBehavior;
 use spec\Spec;
 
-use BackbonePhp\Config;
-use BackbonePhp\Request;
-use BackbonePhp\Response;
+use BackbonePhp\Config\Config;
+use BackbonePhp\Request\Request;
+use BackbonePhp\Response\Response;
 
 use PHPUnit_Framework_TestCase as Assertions;
 
@@ -17,19 +17,18 @@ class RouterSpec extends ObjectBehavior
     protected function setConfig()
     {
         $config = new Config();
-        $config->load(Spec::fixturesPath() . 'router-config.json');
-        $config->set('fileBase', Spec::rootPath());
+        $config->load(Spec::fixturesPath() . 'dev-config.json');
         $this->config = $config;
     }
     
     public function it_is_initializable()
     {
-        $this->shouldHaveType('BackbonePhp\Router');
+        $this->shouldHaveType('BackbonePhp\Router\Router');
     }
     
     public function it_has_a_config_object()
     {
-        $this->config->shouldHaveType('BackbonePhp\Config');
+        $this->config->shouldHaveType('BackbonePhp\Config\Config');
     }
     
     public function it_dispatches_a_request()
@@ -55,7 +54,7 @@ class RouterSpec extends ObjectBehavior
         $expectedBody = '<h1>Hello Static</h1>';
         Assertions::assertContains($expectedBody, $actual, 'should inject body template');
         
-        $expectedMarkup = '<html>';
+        $expectedMarkup = '<html';
         Assertions::assertContains($expectedMarkup, $actual, 'should generate page container');
     }
     

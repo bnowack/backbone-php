@@ -1,6 +1,8 @@
 <?php
 
-namespace BackbonePhp;
+namespace BackbonePhp\Config;
+
+use BackbonePhp\Utils\File;
 
 /**
  * BackbonePHP Configuration class
@@ -25,7 +27,7 @@ class Config
      * 
      * @param str $name Option name
      * @param mixed $value Option value
-     * @return \BackbonePhp\Config 
+     * @return Config Config instance
      */
     public function set($name, $value)
     {
@@ -50,7 +52,7 @@ class Config
      * 
      * @param string $path Path to configuration file
      * @param array $mergeFields config options that should be merged, not replaced during `Config::load`
-     * @return \BackbonePhp\Config 
+     * @return Config Config instance
      */
     public function load($path, $mergeFields = array())
     {

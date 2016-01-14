@@ -1,19 +1,23 @@
 <?php
 
-namespace BackbonePhp;
+namespace BackbonePhp\Application;
+
+use BackbonePhp\Config\Config;
+use BackbonePhp\Router\Router;
+use BackbonePhp\Request\Request;
+use BackbonePhp\Response\Response;
 
 /**
  * BackbonePHP application class
  * 
- * Example usage (with index.php in the app root):
+ * Example usage:
  * 
  *  (new BackbonePhp\Application())
- *      ->setConfig('fileBase', __DIR__ . '/')
- *      ->setConfig('webBase', '/app-directory/') // use only when app is not deployed to web root!
- *      ->loadConfig('config/server.json')
- *      ->loadConfig('config/models.json')
- *      ->loadConfig('config/permissions.json')
- *      ->loadConfig('config/groups.json')
+ *      ->loadConfig(BACKBONEPHP_APP_DIR . 'src/config/default-models.json')
+ *      ->loadConfig(BACKBONEPHP_APP_DIR . 'config/server.json')
+ *      ->loadConfig(BACKBONEPHP_APP_DIR . 'config/models.json')
+ *      ->loadConfig(BACKBONEPHP_APP_DIR . 'config/permissions.json')
+ *      ->loadConfig(BACKBONEPHP_APP_DIR . 'config/groups.json')
  *  ;
  * 
  */
@@ -60,8 +64,7 @@ class Application
      */
     public function setConfig($option, $value)
     {
-        $normalizedValue = $this->normalizeConfigOption($option, $value);
-        $this->config->set($option, $normalizedValue);
+        $this->config->set($option, $value);
         return $this;
     }
 
@@ -77,31 +80,22 @@ class Application
     }
 
     /**
-     * Normalizes a config option
-     * 
-     * @param string $option Config option name
-     * @param mixed $value Value of the config option
-     * @return mixed $value Normalized value of the config option
-     */
-    protected function normalizeConfigOption($option, $value)
-    {
-        // make sure fileBase and webBase have a trailing slash
-        if (in_array($option, array('fileBase', 'webBase'))) {
-            return rtrim($value, '/') . '/';
-        }
-        return $value;
-    }
-    
-    /**
      * Loads and applies configuration data from a (JSON) file
      * 
-     * @param string $path Path to configuration file, relative to self::fileBase
+     * @param string $path Absolute path to configuration file
+     * @param bool $optional Whether FileNotFound errors should be ignored
      * @return \BackbonePhp\Application Application instance
      */
-    public function loadConfig($path)
+    public function loadConfig($path, $optional = false)
     {
-        $mergeFields = array('permissions', 'groups', 'models');
-        $this->config->load($this->config->get('fileBase') . $path, $mergeFields);
+        $mergeFields = array('permissions', 'groups', 'models', 'templateFields');
+        try {
+            $this->config->load($path, $mergeFields, $optional);
+        } catch (\Exception $ex) {
+            if (!$optional) {
+                throw $ex;
+            }
+        }
         return $this;
     }
 

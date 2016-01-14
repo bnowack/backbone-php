@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\BackbonePhp;
+namespace spec\BackbonePhp\Response;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -9,7 +9,7 @@ class ResponseSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('BackbonePhp\Response');
+        $this->shouldHaveType('BackbonePhp\Response\Response');
     }
     
     function it_sets_and_gets_a_header()
@@ -68,7 +68,7 @@ class ResponseSpec extends ObjectBehavior
     public function it_sends_a_body()
     {
         $struct = array('test' => 'test');
-        $expected = json_encode($struct);
+        $expected = json_encode($struct, JSON_PRETTY_PRINT);
         $this->setBody($struct)->shouldReturn($this);
         ob_start(function($actual) use ($expected) {
             if ($actual !== $expected) {

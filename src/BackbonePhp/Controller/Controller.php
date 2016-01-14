@@ -2,8 +2,8 @@
 
 namespace BackbonePhp\Controller;
 
-use BackbonePhp\Config;
-use BackbonePhp\Template;
+use BackbonePhp\Config\Config;
+use BackbonePhp\Template\Template;
 
 /**
  * BackbonePHP Controller Class

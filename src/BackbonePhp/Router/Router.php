@@ -1,10 +1,13 @@
 <?php
 
-namespace BackbonePhp;
+namespace BackbonePhp\Router;
 
 use BackbonePhp\Exception\FileNotFoundException;
 use BackbonePhp\Exception\MethodNotFoundException;
 use BackbonePhp\Controller\Controller;
+use BackbonePhp\Config\Config;
+use BackbonePhp\Request\Request;
+use BackbonePhp\Response\Response;
 
 /**
  * BackbonePHP Router Class
@@ -19,13 +22,13 @@ class Router
     
     /**
      *
-     * @var \BackbonePhp\Request Request
+     * @var Request Request
      */
     protected $request;
     
     /**
      *
-     * @var \BackbonePhp\Response Response
+     * @var Response
      */
     protected $response;
 
@@ -42,9 +45,9 @@ class Router
     /**
      * Detects and calls the configured handlers matching the given request
      * 
-     * @param \BackbonePhp\Request $request Request
-     * @param \BackbonePhp\Response $response Response
-     * @return \BackbonePhp\Router Router instance
+     * @param Request $request Request
+     * @param Response $response Response
+     * @return Router Router instance
      */
     public function dispatchRequest(Request $request, Response $response)
     {
@@ -132,7 +135,7 @@ class Router
      * Derives and sets a regular expression pattern from the given route's path definition
      * 
      * @param \stdClass $route Route object
-     * @return \BackbonePhp\Router Router instance
+     * @return Router Router instance
      */
     protected function buildMatchPattern($route)
     {
@@ -156,7 +159,7 @@ class Router
      * 
      * @param \stdClass $route Route object
      * @param array $pathMatches Matches for the given route against the current request
-     * @return \BackbonePhp\Router Router instance
+     * @return Router Router instance
      */
     protected function buildParameters($route, $pathMatches)
     {
@@ -186,7 +189,7 @@ class Router
      * Handles a template request (fills a page template with the body template specified in the route config)
      * 
      * @param \stdClass $route Route object
-     * @return \BackbonePhp\Router Router instance
+     * @return Router Router instance
      */
     protected function handleTemplateRequest($route)
     {
@@ -199,7 +202,7 @@ class Router
      * Handles a controller call request
      * 
      * @param \stdClass $route Route object
-     * @return \BackbonePhp\Router Router instance
+     * @return Router Router instance
      */
     protected function handleCallRequest($route)
     {

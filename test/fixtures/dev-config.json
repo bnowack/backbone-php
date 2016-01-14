@@ -1,7 +1,9 @@
 {
-    "webBase": "/",
-    "appTitle": "BackbonePHP Test",
-    "pageTitleDelimiter": " - ",
+    "appBase": "/",
+    "appName": "BackbonePHP Test",
+    "backbonePhpBase": "/",
+    "webIcon": "/src/img/favicon.ico",
+    "appIcon": "/src/img/touch-icon.png",
     
     "permissions": {
     },
@@ -13,11 +15,11 @@
             "pageTitle": "Test",
             "routes": {
                 "/test/static": "/test/fixtures/static-body.html.tpl",
-                "/test/plain-call": "\\spec\\BackbonePhp\\RouterSpecController::handlePlainStaticCall",
-                "/test/(:year)": "\\spec\\BackbonePhp\\RouterSpecController::handlePlainDynamicCall",
+                "/test/plain-call": "\\spec\\BackbonePhp\\Router\\RouterSpecController::handlePlainStaticCall",
+                "/test/(:year)": "\\spec\\BackbonePhp\\Router\\RouterSpecController::handlePlainDynamicCall",
                 "/test/invalid/class": "NonExistingController::handleCall",
-                "/test/invalid/method": "\\spec\\BackbonePhp\\RouterSpecController::handleInvalidCall",
-                "/test/resource/(:id)": "\\spec\\BackbonePhp\\RouterSpecController::handleIdCall"
+                "/test/invalid/method": "\\spec\\BackbonePhp\\Router\\RouterSpecController::handleInvalidCall",
+                "/test/resource/(:id)": "\\spec\\BackbonePhp\\Router\\RouterSpecController::handleIdCall"
             },
             "fields": {
                 "id": {

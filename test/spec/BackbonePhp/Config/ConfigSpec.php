@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\BackbonePhp;
+namespace spec\BackbonePhp\Config;
 
 use PhpSpec\ObjectBehavior;
 use spec\Spec;
@@ -10,7 +10,7 @@ class ConfigSpec extends ObjectBehavior
 
     public function it_is_initializable()
     {
-        $this->shouldHaveType('BackbonePhp\Config');
+        $this->shouldHaveType('BackbonePhp\Config\Config');
     }
     
     public function it_sets_and_gets_an_option()

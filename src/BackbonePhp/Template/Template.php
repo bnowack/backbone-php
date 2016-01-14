@@ -1,6 +1,8 @@
 <?php
 
-namespace BackbonePhp;
+namespace BackbonePhp\Template;
+
+use BackbonePhp\Config\Config;
 
 /**
  * BackbonePHP Template Class
@@ -31,16 +33,26 @@ class Template
     public function __construct(Config $config = null, $data = null)
     {
         $this->config = $config ?: new Config();
-        $this->data = $data ?: (object)[
-            'base' => $this->config->get('webBase', '/')
-        ];
+        $this->data = $data ?: $this->getDefaultData();
+    }
+    
+    /**
+     * Creates a data object with default template variables
+     */
+    protected function getDefaultData()
+    {
+        $result = (object)[];
+        foreach ($this->config->get('templateFields', []) as $field) {
+            $result->$field = $this->config->get($field, '');
+        }
+        return $result;
     }
     
     /**
      * Sets the template's (main) content
      * 
      * @param string $content Template content
-     * @return \BackbonePhp\Template Template instance
+     * @return Template Template instance
      */
     public function setContent($content)
     {
@@ -63,7 +75,7 @@ class Template
      * 
      * @param string $name Variable name
      * @param mixed $value Variable value
-     * @return \BackbonePhp\Template Template instance
+     * @return Template Template instance
      */
     public function set($name, $value)
     {
@@ -76,7 +88,7 @@ class Template
      * 
      * @param int $maxIterations Maximum number of recursions for nested variables and templates
      * @param int $iteration Current iteration
-     * @return \BackbonePhp\Template Template instance
+     * @return Template Template instance
      */
     public function render($maxIterations = 32, $iteration = 0)
     {
@@ -97,7 +109,7 @@ class Template
      * 
      * Format: {varName}
      * 
-     * @return \BackbonePhp\Template Template instance
+     * @return Template Template instance
      */
     protected function renderVariables()
     {
@@ -117,17 +129,26 @@ class Template
      * 
      * Format: {/path/to/sub-template.tpl}
      * 
-     * @return \BackbonePhp\Template Template instance
+     * @return Template Template instance
      */
     protected function renderSubTemplates()
     {
         $this->content = preg_replace_callback('/\{(\/[^\}]+\.tpl)\}/', function($matches) {
             $subTemplatePath = $matches[1];
-            $fullPath = $this->config->get('fileBase', '/') . ltrim($subTemplatePath, '/');
-            $content = file_exists($fullPath)
-                ? file_get_contents($fullPath)
-                : "[notFound:$subTemplatePath]"
-            ;
+            // the path may be relative, try as-is first, then app path, then BackbonePHP path
+            $paths = [
+                $subTemplatePath,                                   // absolute
+                ltrim($subTemplatePath, '/'),                       // relative to script dir
+                BACKBONEPHP_APP_DIR . ltrim($subTemplatePath, '/'), // relative to app dir
+                BACKBONEPHP_DIR . ltrim($subTemplatePath, '/')      // relative to BackbonePHP dir
+            ];
+            $content = "[notFound:$subTemplatePath]";
+            foreach ($paths as $path) {
+                if (file_exists($path)) {
+                    $content = file_get_contents($path);
+                    break;
+                }
+            }
             return (new Template($this->config, $this->data))
                 ->setContent($content)
                 ->render()

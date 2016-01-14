@@ -1,6 +1,8 @@
 <?php
 
-namespace BackbonePhp;
+namespace BackbonePhp\Response;
+
+use BackbonePhp\Config\Config;
 
 class Response
 {
@@ -177,7 +179,7 @@ class Response
             ;
             $path = isset($cookie->path)
                 ? $cookie->path
-                : $this->config->get('webBase', '/')
+                : $this->config->get('appBase', '/')
             ;
             setCookie($name, $value, $expire, $path);
         }
@@ -193,7 +195,7 @@ class Response
     {
         $body = $this->getBody();
         if (!is_string($body)) {
-            $body = json_encode($body, JSON_PRETTY_PRINT && JSON_FORCE_OBJECT);
+            $body = json_encode($body, $body ? JSON_PRETTY_PRINT : JSON_FORCE_OBJECT);
         }
         echo $body;
         flush();

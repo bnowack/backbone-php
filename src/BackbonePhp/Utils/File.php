@@ -1,6 +1,6 @@
 <?php
 
-namespace BackbonePhp;
+namespace BackbonePhp\Utils;
 
 use BackbonePhp\Exception\FileNotFoundException;
 use BackbonePhp\Exception\InvalidJsonException;

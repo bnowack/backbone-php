@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\BackbonePhp;
+namespace spec\BackbonePhp\Template;
 
 use PhpSpec\ObjectBehavior;
 use spec\Spec;
@@ -10,7 +10,7 @@ class TemplateSpec extends ObjectBehavior
     
     function it_is_initializable()
     {
-        $this->shouldHaveType('BackbonePhp\Template');
+        $this->shouldHaveType('BackbonePhp\Template\Template');
     }
     
     function it_sets_its_content()

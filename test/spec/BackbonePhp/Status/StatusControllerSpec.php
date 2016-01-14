@@ -1,13 +1,13 @@
 <?php
 
-namespace spec\BackbonePhp\Controller;
+namespace spec\BackbonePhp\Status;
 
 use PhpSpec\ObjectBehavior;
 use spec\Spec;
 
-use BackbonePhp\Config;
-use BackbonePhp\Request;
-use BackbonePhp\Response;
+use BackbonePhp\Config\Config;
+use BackbonePhp\Request\Request;
+use BackbonePhp\Response\Response;
 
 use PHPUnit_Framework_TestCase as Assertions;
 
@@ -16,14 +16,13 @@ class StatusControllerSpec extends ObjectBehavior
     
     public function it_is_initializable()
     {
-        $this->shouldHaveType('BackbonePhp\Controller\StatusController');
+        $this->shouldHaveType('BackbonePhp\Status\StatusController');
     }
     
     public function it_generates_a_status_object()
     {
         $config = new Config();
-        $config->set('fileBase', Spec::rootPath());
-        $config->load(Spec::rootPath() . 'src/config/default-models.json');
+        $config->load(Spec::rootPath() . 'src/BackbonePhp/Application/config/models.json');
         $this->config = $config;
         
         $request = new Request();
