@@ -16,7 +16,7 @@
         },
         "config": {
             "routes": {
-                "/config": "\\BackbonePhp\\Config\\ConfigController::handleFrontendConfigRequest"
+                "/api/config": "\\BackbonePhp\\Config\\ConfigController::handleFrontendConfigRequest"
             }
         },
         "home": {
