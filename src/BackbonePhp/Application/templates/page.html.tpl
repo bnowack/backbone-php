@@ -26,19 +26,19 @@
                 baseUrl: "{appBase}", // required for IE9
                 paths: {
                     // polyfills
-                    promise:                'vendor/jakearchibald/es6-promise/es6-promise.min',
+                    promise:                '{backbonePhpBase}vendor/jakearchibald/es6-promise/es6-promise.min',
                     // lib
-                    jquery:                 'vendor/jquery/jquery/jquery-2.2.0.min',
-                    underscore:             'vendor/jashkenas/underscore/underscore-min',
-                    underscore_string:      'vendor/epeli/underscore.string/underscore.string.min',
-                    backbone:               'vendor/jashkenas/backbone/backbone-min',
-                    velocity:               'vendor/julianshapiro/velocity/velocity.min',
-                    velocity_ui:            'vendor/julianshapiro/velocity/velocity.ui.min',
+                    jquery:                 '{backbonePhpBase}vendor/jquery/jquery/jquery-2.2.0.min',
+                    underscore:             '{backbonePhpBase}vendor/jashkenas/underscore/underscore-min',
+                    underscore_string:      '{backbonePhpBase}vendor/epeli/underscore.string/underscore.string.min',
+                    backbone:               '{backbonePhpBase}vendor/jashkenas/backbone/backbone-min',
+                    velocity:               '{backbonePhpBase}vendor/julianshapiro/velocity/velocity.min',
+                    velocity_ui:            '{backbonePhpBase}vendor/julianshapiro/velocity/velocity.ui.min',
                     // requireJS
-                    text:                   'vendor/requirejs/text/text',
-                    css:                    'vendor/dimaxweb/CSSLoader/css',
-                    async:                  'vendor/millermedeiros/requirejs-plugins/src/async',
-                    noext:                  'vendor/millermedeiros/requirejs-plugins/src/noext',
+                    text:                   '{backbonePhpBase}vendor/requirejs/text/text',
+                    css:                    '{backbonePhpBase}vendor/dimaxweb/CSSLoader/css',
+                    async:                  '{backbonePhpBase}vendor/millermedeiros/requirejs-plugins/src/async',
+                    noext:                  '{backbonePhpBase}vendor/millermedeiros/requirejs-plugins/src/noext',
                     // framework
                     backbonePhp:            '{backbonePhpBase}src/BackbonePhp/'
                 }
@@ -48,12 +48,12 @@
         <link rel="shortcut icon" href="{webIcon}" data-size="32x32"/>
         <link rel="apple-touch-icon" href="{appIcon}" data-size="152x152"/>
         
-        <link rel="stylesheet" type="text/css" href="{appBase}vendor/necolas/normalize.css/normalize.css"/>
+        <link rel="stylesheet" type="text/css" href="{backbonePhpBase}vendor/necolas/normalize.css/normalize.css"/>
         <link rel="stylesheet" type="text/css" href="{backbonePhpBase}src/BackbonePhp/Application/css/application.css"/>
     </head>
     <body>
         {body}
-        <script type="text/javascript" src="{appBase}vendor/jrburke/requirejs/require.js"></script>
+        <script type="text/javascript" src="{backbonePhpBase}vendor/jrburke/requirejs/require.js"></script>
         <script type="text/javascript" src="{backbonePhpBase}src/BackbonePhp/Application/Application.js"></script>
     </body>
 </html>
