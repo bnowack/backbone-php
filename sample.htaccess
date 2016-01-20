@@ -5,13 +5,13 @@ RewriteBase /
 RedirectMatch 404 /\.git
 
 # Hide the project's bin directory
-RedirectMatch 404 /bin
+RedirectMatch 404 /bin/
 
 # Hide the project's data directory
-RedirectMatch 404 /data
+RedirectMatch 404 /data/
 
 # Hide configuration files
-RedirectMatch 404 /config
+RedirectMatch 404 /config/
 
 # Redirect any other non-file requests to the front controller.
 RewriteCond %{REQUEST_FILENAME} !-f
