@@ -22,8 +22,11 @@ define("BACKBONEPHP_APP_DIR",   BACKBONEPHP_DIR);     // same as repo dir during
 require_once BACKBONEPHP_APP_DIR . 'vendor/autoload.php';
 
 // Serve static assets
-if (preg_match('/\.(png|jpg|jpe?g|gif|ico|css|js|json|txt)($|\?)/i', $_SERVER["REQUEST_URI"]) && file_exists($_SERVER["REQUEST_URI"])) {
-    return false;
+if (preg_match('/\.(png|jpg|jpe?g|gif|ico|css|js|txt)($|\?)/i', $_SERVER["REQUEST_URI"])) {
+   return false;
+}
+else if (preg_match('/\.(json)($|\?)/i', $_SERVER["REQUEST_URI"]) && file_exists($_SERVER["REQUEST_URI"])) {
+   return false;
 }
 // Serve dynamic contents
 else {
