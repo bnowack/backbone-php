@@ -4,130 +4,8 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "94cec79897a0e25f275ba00b02b42f03",
-    "packages": [
-        {
-            "name": "dimaxweb/CSSLoader",
-            "version": "2012.09.15",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/dimaxweb/CSSLoader/master/dist/css.js",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "epeli/underscore.string",
-            "version": "3.2.2",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/epeli/underscore.string/3.2.2/dist/underscore.string.min.js",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "jakearchibald/es6-promise",
-            "version": "3.0.2",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/jakearchibald/es6-promise/v3.0.2/dist/es6-promise.min.js",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "jashkenas/backbone",
-            "version": "1.2.3",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/jashkenas/backbone/1.2.3/backbone-min.js",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "jashkenas/underscore",
-            "version": "1.8.3",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/jashkenas/underscore/1.8.3/underscore-min.js",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "jquery/jquery",
-            "version": "2.2.0",
-            "dist": {
-                "type": "file",
-                "url": "http://code.jquery.com/jquery-2.2.0.min.js",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "jrburke/requirejs",
-            "version": "2.1.22",
-            "dist": {
-                "type": "file",
-                "url": "http://requirejs.org/docs/release/2.1.22/minified/require.js",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "julianshapiro/velocity",
-            "version": "1.2.3",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/julianshapiro/velocity/archive/1.2.3.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "millermedeiros/requirejs-plugins",
-            "version": "1.0.3",
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/millermedeiros/requirejs-plugins/archive/v1.0.3.zip",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "necolas/normalize.css",
-            "version": "3.0.3",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/necolas/normalize.css/3.0.3/normalize.css",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        },
-        {
-            "name": "requirejs/text",
-            "version": "2.0.14",
-            "dist": {
-                "type": "file",
-                "url": "https://raw.githubusercontent.com/requirejs/text/2.0.14/text.js",
-                "reference": null,
-                "shasum": null
-            },
-            "type": "library"
-        }
-    ],
+    "hash": "1629d62b108258e91b4d62eac3e19b12",
+    "packages": [],
     "packages-dev": [
         {
             "name": "behat/behat",
@@ -630,6 +508,17 @@
             "time": "2015-10-08 16:21:54"
         },
         {
+            "name": "dimaxweb/CSSLoader",
+            "version": "2012.09.15",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/dimaxweb/CSSLoader/master/dist/css.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
             "source": {
@@ -717,6 +606,17 @@
             ],
             "description": "This will create a html formatter for Behat.",
             "time": "2015-05-27 15:09:34"
+        },
+        {
+            "name": "epeli/underscore.string",
+            "version": "3.2.2",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/epeli/underscore.string/3.2.2/dist/underscore.string.min.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
         },
         {
             "name": "fabpot/goutte",
@@ -1040,6 +940,83 @@
             "time": "2015-06-15 20:19:33"
         },
         {
+            "name": "jakearchibald/es6-promise",
+            "version": "3.0.2",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/jakearchibald/es6-promise/v3.0.2/dist/es6-promise.min.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "jashkenas/backbone",
+            "version": "1.2.3",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/jashkenas/backbone/1.2.3/backbone-min.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "jashkenas/underscore",
+            "version": "1.8.3",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/jashkenas/underscore/1.8.3/underscore-min.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "jquery/jquery",
+            "version": "2.2.0",
+            "dist": {
+                "type": "file",
+                "url": "http://code.jquery.com/jquery-2.2.0.min.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "jrburke/requirejs",
+            "version": "2.1.22",
+            "dist": {
+                "type": "file",
+                "url": "http://requirejs.org/docs/release/2.1.22/minified/require.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "julianshapiro/velocity",
+            "version": "1.2.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/julianshapiro/velocity/archive/1.2.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "millermedeiros/requirejs-plugins",
+            "version": "1.0.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/millermedeiros/requirejs-plugins/archive/v1.0.3.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.5.0",
             "source": {
@@ -1080,6 +1057,17 @@
                 "object graph"
             ],
             "time": "2015-11-07 22:20:37"
+        },
+        {
+            "name": "necolas/normalize.css",
+            "version": "3.0.3",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/necolas/normalize.css/3.0.3/normalize.css",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -1720,6 +1708,17 @@
                 "response"
             ],
             "time": "2015-05-04 20:22:00"
+        },
+        {
+            "name": "requirejs/text",
+            "version": "2.0.14",
+            "dist": {
+                "type": "file",
+                "url": "https://raw.githubusercontent.com/requirejs/text/2.0.14/text.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
         },
         {
             "name": "sebastian/comparator",

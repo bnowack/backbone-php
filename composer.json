@@ -24,9 +24,142 @@
         "behat/mink-selenium2-driver": "1.2.0",
         "henrikbjorn/phpspec-code-coverage": "2.0.1",        
         "ext-xdebug": ">=2.2.1",
-        "bnowack/scss-watcher": "1.0.6"
+        "bnowack/scss-watcher": "1.0.6",
+        
+        "jquery/jquery": "2.2.0",
+        "necolas/normalize.css": "3.0.3",
+        "jrburke/requirejs": "2.1.22",
+        "jashkenas/underscore": "1.8.3",
+        "jashkenas/backbone": "1.2.3",
+        "requirejs/text": "2.0.14",
+        "epeli/underscore.string": "3.2.2",
+        "julianshapiro/velocity": "1.2.3",
+        "dimaxweb/CSSLoader": "2012.09.15",
+        "jakearchibald/es6-promise": "3.0.2",
+        "millermedeiros/requirejs-plugins": "1.0.3"
     },
     "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "2.2.0",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-2.2.0.min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "necolas/normalize.css",
+                "version": "3.0.3",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/necolas/normalize.css/3.0.3/normalize.css",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jrburke/requirejs",
+                "version": "2.1.22",
+                "dist": {
+                    "url": "http://requirejs.org/docs/release/2.1.22/minified/require.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jashkenas/underscore",
+                "version": "1.8.3",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/jashkenas/underscore/1.8.3/underscore-min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jashkenas/backbone",
+                "version": "1.2.3",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/jashkenas/backbone/1.2.3/backbone-min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "requirejs/text",
+                "version": "2.0.14",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/requirejs/text/2.0.14/text.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "epeli/underscore.string",
+                "version": "3.2.2",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/epeli/underscore.string/3.2.2/dist/underscore.string.min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "julianshapiro/velocity",
+                "version": "1.2.3",
+                "dist": {
+                    "url": "https://github.com/julianshapiro/velocity/archive/1.2.3.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "dimaxweb/CSSLoader",
+                "version": "2012.09.15",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/dimaxweb/CSSLoader/master/dist/css.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "jakearchibald/es6-promise",
+                "version": "3.0.2",
+                "dist": {
+                    "url": "https://raw.githubusercontent.com/jakearchibald/es6-promise/v3.0.2/dist/es6-promise.min.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "millermedeiros/requirejs-plugins",
+                "version": "1.0.3",
+                "dist": {
+                    "url": "https://github.com/millermedeiros/requirejs-plugins/archive/v1.0.3.zip",
+                    "type": "zip"
+                }
+            }
+        }
     ],
     "config": {
         "bin-dir": "bin"
