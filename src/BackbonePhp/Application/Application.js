@@ -32,7 +32,7 @@ function($, backbone, garbageCollection, events, Request, Router) {
     backbone.request = new Request(window.location);
     
     // load config
-    $.get('config', function(config) {
+    $.get('api/config', function(config) {
         backbone.config = config;
         // instantiate router and start the application
         (new Router())
