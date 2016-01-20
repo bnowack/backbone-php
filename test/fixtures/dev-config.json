@@ -2,8 +2,8 @@
     "appBase": "/",
     "appName": "BackbonePHP Test",
     "backbonePhpBase": "/",
-    "webIcon": "/src/img/favicon.ico",
-    "appIcon": "/src/img/touch-icon.png",
+    "webIcon": "/src/BackbonePhp/Application/img/favicon.ico",
+    "appIcon": "/src/BackbonePhp/Application/img/touch-icon.png",
     
     "permissions": {
     },
