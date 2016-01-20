@@ -11,7 +11,7 @@ define("BACKBONEPHP_APP_DIR",   dirname(dirname(dirname(dirname(dirname(__DIR__)
 require_once BACKBONEPHP_APP_DIR . 'vendor/autoload.php';
 
 // Create and start the application
-(new BackbonePhp\Application())
+(new BackbonePhp\Application\Application())
     // load default config
     ->loadConfig(BACKBONEPHP_DIR . 'src/BackbonePhp/Application/config/permissions.json')
     ->loadConfig(BACKBONEPHP_DIR . 'src/BackbonePhp/Application/config/groups.json')
