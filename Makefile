@@ -17,7 +17,7 @@ help:
 	@echo "  make scss-start .............. Start SCSS watcher"
 
 separator:
-	@echo "-----------------------------------------------------------------------"
+	@echo "-------------------------------------------------------------------------------"
 
 behat-active: separator
 	@echo "Running Behat features from 'active' suite"
