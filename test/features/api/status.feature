@@ -5,7 +5,7 @@ Feature: Status page
 
     @ui
     Scenario: View status page
-        Given I go to "/status"
+        Given I go to "/api/status"
         Then I should get a successful response with format "json"
         And I should see a JSON field "status" with value "ok"
         And I should see a JSON field "timestamp"

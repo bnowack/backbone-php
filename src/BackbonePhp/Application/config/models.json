@@ -11,7 +11,7 @@
         },
         "status": {
             "routes": {
-                "/status": "\\BackbonePhp\\Status\\StatusController::handleStatusRequest"
+                "/api/status": "\\BackbonePhp\\Status\\StatusController::handleStatusRequest"
             }
         },
         "config": {
