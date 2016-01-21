@@ -91,6 +91,8 @@ class Request
             'files' => (object) $_FILES,
             'server' => isset($_SERVER) ? (object) $_SERVER : (object)[]
         ];
+        // normalize appBase
+        $this->normalizeAppBase();
         // extract path
         $appBase = $this->config->get('appBase', '/');
         $appBaseRegex = '/^' . preg_quote($appBase, '/') . '/';
@@ -98,6 +100,29 @@ class Request
         $trimmedPath = ltrim(preg_replace($appBaseRegex, '', $requestUri), '/'); 
         $path = '/' . $trimmedPath;
         $this->setPath($path);
+        return $this;
+    }
+    
+    /**
+     * Detects the application web base if Config::appBase has been specified as array
+     * 
+     * Given a Config::appBase ["/mydir/", "/"] and a request uri "/mydir/foo", then
+     * the request will be dispatched as `/foo`, not `/mydir/foo` after normalization
+     * 
+     * @return \BackbonePhp\Request\Request
+     */
+    protected function normalizeAppBase()
+    {
+        $requestUri = $this->getEnvironmentVariable('server', 'REQUEST_URI') ?: '/';
+        $appBase = $this->config->get('appBase', '/');
+        if (is_array($appBase)) {
+            foreach ($appBase as $path) {
+                if (strpos($requestUri, $path) === 0) {
+                    $this->config->set('appBase', $path);
+                    break;
+                }
+            }
+        }
         return $this;
     }
     

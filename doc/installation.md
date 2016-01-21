@@ -49,3 +49,9 @@
             "webIcon": "src/img/favicon.ico",
             "appIcon": "src/img/touch-icon.png"
         }
+
+* If you plan to deploy your application to multiple hosts and/or directories, you can define `appBase` as an ordered list of possible base directories:
+
+        {
+            "appBase": ["/project-directory/", "/demo1/", "/"]
+        }

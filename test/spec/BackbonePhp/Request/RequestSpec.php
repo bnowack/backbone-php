@@ -78,6 +78,32 @@ class RequestSpec extends ObjectBehavior
         $this->get('arguments')->baz->shouldReturn('bat');
     }
     
+    function it_normalizes_the_app_base()
+    {
+        $this->config->set('appBase', ['/prefix-suffix/', '/prefix/', '/']);
+        $env = (object)[
+            'server' => (object) [
+                'REQUEST_URI' => '/prefix/foo/bar'
+            ]
+        ];
+        $this->initializeFromEnvironment($env)->shouldReturn($this);
+        $this->config->get('appBase')->shouldReturn('/prefix/');
+        $this->get('cleanPath')->shouldReturn('/foo/bar');
+        
+        $this->config->set('appBase', ['/prefix-suffix/', '/prefix/', '/']);
+        $env->server->REQUEST_URI = '/foo/bar';
+        $this->initializeFromEnvironment($env)->shouldReturn($this);
+        $this->config->get('appBase')->shouldReturn('/');
+        $this->get('cleanPath')->shouldReturn('/foo/bar');
+        
+        $this->config->set('appBase', ['/prefix-suffix/', '/prefix/', '/']);
+        $env->server->REQUEST_URI = '/prefix-suffix/foo/bar';
+        $this->initializeFromEnvironment($env)->shouldReturn($this);
+        $this->config->get('appBase')->shouldReturn('/prefix-suffix/');
+        $this->get('cleanPath')->shouldReturn('/foo/bar');
+        
+    }
+    
     function it_extracts_repeated_arguments_as_array()
     {
         $env = (object)[
