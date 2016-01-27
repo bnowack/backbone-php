@@ -1,48 +1,43 @@
 /**
- * BackbonePHP main application script 
- * 
- * Sets up the application
+ * BackbonePHP main application script, initializes and starts the front-end
  * 
  * @param {jQuery} $ The jQuery library
- * @param {Object} backbone BackboneJS library
- * @param {Object} garbageCollection Garbage collection library
- * @param {Object} events Global events library
+ * @param {Object} bb BackboneJS library
+ * @param {Object} _ The underscore library
  * @param {Function} Request Request class
  * @param {Function} Router Backbone router class
+ * @param {Object} config Frontend configuration
  */
 require([
     'jquery',
     'backbone',
-    'backbonePhp/Utils/garbageCollection',
-    'backbonePhp/Utils/events',
+    'underscore',
     'backbonePhp/Request/Request',
     'backbonePhp/Router/Router',
-    'text',
-    'css'
+    'json!api/config'
 ], 
-function($, backbone, garbageCollection, events, Request, Router) {
+function($, bb, _, Request, Router, config) {
     
-    // start garbage collection
-    garbageCollection.start();
+    "use strict";
     
-    // activate global events
-    events.initialize();
+    // forward global events to backbone
+    $(window).on('resize', _.throttle(function(e) { bb.trigger('resize:window', e); }, 1000));
+    $(window).on('scroll', _.throttle(function(e) { bb.trigger('scroll:window', e); }, 100));
+    $(document).on('click', function(e) { bb.trigger('click:document', e); });
+    $(document).on('keydown', function(e) { bb.trigger('keydown:document', e); });
+    $(document).on('keypress', function(e) { bb.trigger('keypress:document', e); });
+    $(document).on('keyup', function(e) { bb.trigger('keyup:document', e); });
     
     // init request
-    backbone.request = new Request(window.location);
+    bb.request = new Request(window.location);
     
-    // load config
-    $.get('api/config', function(config) {
-        backbone.config = config;
-        // instantiate router and start the application
-        (new Router())
-            .enablePushStateLinks(config.appBase)
-            .setExternalLinkTargetFor('body', '_ext')
-            .activateRoutes()
-            .start(config.appBase)
-        ;
+    // instantiate the router
+    bb.router = new Router(config);
+        
+    // start the application
+    bb.history.start({
+        pushState: true,
+        root: config.appBase.replace(/\/$/, '')
     });
-    return;
-    
-
+        
 });
