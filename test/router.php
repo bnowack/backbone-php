@@ -28,6 +28,10 @@ if (preg_match('/\.(png|jpg|jpe?g|gif|ico|css|js|txt)($|\?)/i', $_SERVER["REQUES
 else if (preg_match('/\.(json)($|\?)/i', $_SERVER["REQUEST_URI"]) && file_exists($_SERVER["REQUEST_URI"])) {
    return false;
 }
+// serve test dir
+else if (preg_match('/\/test\//i', $_SERVER["REQUEST_URI"])) {
+   return false;
+}
 // Serve dynamic contents
 else {
     (new BackbonePhp\Application\Application())
