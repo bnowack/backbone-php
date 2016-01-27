@@ -15,6 +15,8 @@ help:
 
 	@echo "  make www-start ............... Start test web server"
 	@echo "  make scss-start .............. Start SCSS watcher"
+	@echo "  make karma-start ............. Start Karma Test Runner"
+	@echo "  make karma-run ............... Test JavaScript Specs"
 
 separator:
 	@echo "-------------------------------------------------------------------------------"
@@ -55,3 +57,11 @@ www-start:
 
 scss-start:
 	php vendor/bnowack/scss-watcher/scripts/watch.php --path=src
+
+karma-start:
+	@make separator 
+	karma start karma.conf.js
+
+karma-run:
+	@make separator 
+	karma run
