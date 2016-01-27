@@ -38,6 +38,7 @@
                     text:                   '{backbonePhpBase}vendor/requirejs/text/text',
                     css:                    '{backbonePhpBase}vendor/dimaxweb/CSSLoader/css',
                     async:                  '{backbonePhpBase}vendor/millermedeiros/requirejs-plugins/src/async',
+                    json:                   '{backbonePhpBase}vendor/millermedeiros/requirejs-plugins/src/json',
                     noext:                  '{backbonePhpBase}vendor/millermedeiros/requirejs-plugins/src/noext',
                     // framework
                     backbonePhp:            '{backbonePhpBase}src/BackbonePhp/'
