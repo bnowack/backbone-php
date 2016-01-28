@@ -225,7 +225,7 @@ class ProjectContext extends MinkContext implements Context, SnippetAcceptingCon
         $el = $page->find('css', $tag);
         Assertions::assertNotNull($el);
         $actual = $el->getText();
-        Assertions::assertEquals($value, $actual);
+        Assertions::assertContains($value, $actual);
     }
     
     /**
