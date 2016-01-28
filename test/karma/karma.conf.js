@@ -5,7 +5,7 @@
 module.exports = function(config) {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: '../../',
         
         // frameworks to use
         frameworks: ['requirejs', 'jasmine'],
@@ -14,9 +14,9 @@ module.exports = function(config) {
         files: [
             {pattern: 'vendor/**/*.js', included: false},
             {pattern: 'src/**/*.js', included: false},
-            {pattern: 'test/spec/**/*Spec.js', included: false},
+            {pattern: 'src/**/*Spec.js', included: false},
             
-            'test/karma-requirejs.js'
+            'test/karma/karma-requirejs.js'
         ],
         
         // list of files to exclude

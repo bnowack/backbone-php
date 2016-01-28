@@ -66,8 +66,8 @@ scss-start:
 
 karma-start:
 	@make separator 
-	karma start karma.conf.js
+	karma start test/karma/karma.conf.js
 
 karma-run:
 	@make separator 
-	karma run
+	karma run test/karma/karma.conf.js
