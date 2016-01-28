@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\BackbonePhp\Router;
+namespace src\BackbonePhp\Router;
 
 use PhpSpec\ObjectBehavior;
-use spec\Spec;
+use SpecHelper;
 
 use BackbonePhp\Config\Config;
 use BackbonePhp\Request\Request;
@@ -17,7 +17,7 @@ class RouterSpec extends ObjectBehavior
     protected function setConfig()
     {
         $config = new Config();
-        $config->load(Spec::fixturesPath() . 'dev-config.json');
+        $config->load(SpecHelper::fixturesPath() . 'dev-config.json');
         $this->config = $config;
     }
     

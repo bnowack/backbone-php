@@ -1,9 +1,10 @@
 <?php
 
-namespace spec\BackbonePhp\Response;
+namespace src\BackbonePhp\Response;
 
 use PhpSpec\ObjectBehavior;
-use Prophecy\Argument;
+
+use PHPUnit_Framework_TestCase as Assertions;
 
 class ResponseSpec extends ObjectBehavior
 {
@@ -67,17 +68,35 @@ class ResponseSpec extends ObjectBehavior
     
     public function it_sends_a_body()
     {
-        $struct = array('test' => 'test');
-        $expected = json_encode($struct, JSON_PRETTY_PRINT);
-        $this->setBody($struct)->shouldReturn($this);
-        ob_start(function($actual) use ($expected) {
-            if ($actual !== $expected) {
-                throw new \Exception('should send correct body (' . $actual . ' !== ' . $expected . ')');
-            }
+        $expected = 'test';
+        $this->setBody($expected)->shouldReturn($this);
+        $result = (object)[
+            'actual' => ''
+        ];
+        ob_start(function($output) use ($result) {
+            $result->actual = $output;
             return null;
         });
         $this->sendBody()->shouldReturn($this);
         ob_end_flush();
+        Assertions::assertEquals($expected, $result->actual, 'should send body');
+    }
+    
+    public function it_sends_a_non_string_body_as_json()
+    {
+        $struct = array('test' => 'test');
+        $this->setBody($struct)->shouldReturn($this);
+        $result = (object)[
+            'expected' => json_encode($struct, JSON_PRETTY_PRINT),
+            'actual' => ''
+        ];
+        ob_start(function($output) use ($result) {
+            $result->actual = $output;
+            return null;
+        });
+        $this->sendBody()->shouldReturn($this);
+        ob_end_flush();
+        Assertions::assertEquals($result->expected, $result->actual, 'should send body as json');
     }
     
     public function it_sets_a_cookie()

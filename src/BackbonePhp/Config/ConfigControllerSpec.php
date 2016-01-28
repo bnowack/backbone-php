@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\BackbonePhp\Config;
+namespace src\BackbonePhp\Config;
 
 use PhpSpec\ObjectBehavior;
-use spec\Spec;
+use SpecHelper;
 
 use BackbonePhp\Config\Config;
 use BackbonePhp\Request\Request;
@@ -21,10 +21,10 @@ class ConfigControllerSpec extends ObjectBehavior
     public function it_generates_a_frontend_config_object()
     {
         $config = new Config();
-        $config->load(Spec::rootPath() . 'src/BackbonePhp/Application/config/application.json');
-        $config->load(Spec::rootPath() . 'src/BackbonePhp/Application/config/groups.json');
-        $config->load(Spec::rootPath() . 'src/BackbonePhp/Application/config/models.json');
-        $config->load(Spec::rootPath() . 'src/BackbonePhp/Application/config/permissions.json');
+        $config->load(SpecHelper::rootPath() . 'src/BackbonePhp/Application/config/application.json');
+        $config->load(SpecHelper::rootPath() . 'src/BackbonePhp/Application/config/groups.json');
+        $config->load(SpecHelper::rootPath() . 'src/BackbonePhp/Application/config/models.json');
+        $config->load(SpecHelper::rootPath() . 'src/BackbonePhp/Application/config/permissions.json');
         $this->config = $config;
         
         $request = new Request();

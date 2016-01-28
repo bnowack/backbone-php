@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\BackbonePhp\Request;
+namespace src\BackbonePhp\Request;
 
 use PhpSpec\ObjectBehavior;
 

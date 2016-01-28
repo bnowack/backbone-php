@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\BackbonePhp\Config;
+namespace src\BackbonePhp\Config;
 
 use PhpSpec\ObjectBehavior;
-use spec\Spec;
+use SpecHelper;
 
 class ConfigSpec extends ObjectBehavior
 {
@@ -22,7 +22,7 @@ class ConfigSpec extends ObjectBehavior
     
     public function it_loads_options_from_json()
     {
-        $this->load(Spec::fixturesPath() . 'config-1.json')->shouldReturn($this);
+        $this->load(SpecHelper::fixturesPath() . 'config-1.json')->shouldReturn($this);
         $this->get('foo')->shouldReturn('bar');
         $this->get('baz')->shouldReturn(null);
         $this->get('permissions')->editEverything->shouldHaveType('\stdClass');
@@ -30,7 +30,7 @@ class ConfigSpec extends ObjectBehavior
     
     public function it_loads_options_as_object()
     {
-        $this->load(Spec::fixturesPath() . 'config-1.json')->shouldReturn($this);
+        $this->load(SpecHelper::fixturesPath() . 'config-1.json')->shouldReturn($this);
         $this->get('object')->shouldHaveType('\stdClass');
         $this->get('object')->foo->shouldReturn('bar');
     }
@@ -42,8 +42,8 @@ class ConfigSpec extends ObjectBehavior
     
     public function it_combines_loaded_config_options()
     {
-        $this->load(Spec::fixturesPath() . 'config-1.json', array('permissions'))->shouldReturn($this);
-        $this->load(Spec::fixturesPath() . 'config-2.json', array('permissions'))->shouldReturn($this);
+        $this->load(SpecHelper::fixturesPath() . 'config-1.json', array('permissions'))->shouldReturn($this);
+        $this->load(SpecHelper::fixturesPath() . 'config-2.json', array('permissions'))->shouldReturn($this);
         $this->get('foo')->shouldReturn('baz');
         $this->get('baz')->shouldReturn(null);
         $this->get('bat')->shouldReturn('test');

@@ -1,0 +1,17 @@
+bootstrap: test/phpspec/bootstrap.php
+formatter.name: pretty
+extensions:
+    - PhpSpec\Extension\CodeCoverageExtension
+suites:
+    default:
+        src_path: src
+        spec_prefix: src
+code_coverage:
+    whitelist:
+        - src/BackbonePhp
+    format:
+        - html
+        - clover
+    output:
+        html: test/reports/php-coverage
+        clover: test/reports/php-coverage/coverage.xml

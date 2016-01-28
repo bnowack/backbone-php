@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\BackbonePhp\Application;
+namespace src\BackbonePhp\Application;
 
 use PhpSpec\ObjectBehavior;
-use spec\Spec;
+use SpecHelper;
 
 class ApplicationSpec extends ObjectBehavior
 {
@@ -21,14 +21,14 @@ class ApplicationSpec extends ObjectBehavior
     
     public function it_loads_a_config_file()
     {
-        $this->loadConfig(Spec::fixturesPath() . 'config-1.json')->shouldReturn($this);
+        $this->loadConfig(SpecHelper::fixturesPath() . 'config-1.json')->shouldReturn($this);
         $this->getConfig('foo')->shouldReturn('bar');
     }
     
     function it_throws_an_exception_when_loading_a_non_existing_or_invalid_config_file()
     {
-        $this->shouldThrow('\BackbonePhp\Exception\FileNotFoundException')->duringLoadConfig(Spec::fixturesPath() . 'does-not-exist.json');
-        $this->shouldThrow('\BackbonePhp\Exception\InvalidJsonException')->duringLoadConfig(Spec::fixturesPath() . 'invalid-json.txt');
+        $this->shouldThrow('\BackbonePhp\Exception\FileNotFoundException')->duringLoadConfig(SpecHelper::fixturesPath() . 'does-not-exist.json');
+        $this->shouldThrow('\BackbonePhp\Exception\InvalidJsonException')->duringLoadConfig(SpecHelper::fixturesPath() . 'invalid-json.txt');
     }
     
     public function it_dispatches_a_request()

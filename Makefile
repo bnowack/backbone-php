@@ -1,6 +1,6 @@
 
 BEHAT_BIN = ../bin/behat
-PHPSPEC_BIN = ../bin/phpspec
+PHPSPEC_BIN = bin/phpspec
 SPEC_REPORT_DIR = 
 
 help:
@@ -9,6 +9,7 @@ help:
 	@echo "  make behat-build ............. Run Behat features from 'build' suite and create Behat HTML report"
 	@echo "  make spec-build .............  Run all PHPSpec files"
 	@echo "  make spec-report ............. Run all PHPSpec files and create HTML and coverage reports"
+	@echo "  make spec-run    ............. Run specified PHPSpec files (or dir) append spec='path/to/spec'"
 
 	@echo "  make bdd-build ............... Run all Behat features and PHPSpec files"
 	@echo "  make bdd-report .............. Run all Behat features and PHPSpec files and create Reports"
@@ -34,13 +35,18 @@ behat-build: separator
 spec-build: separator
 	@echo "Running all PHPSpec files"
 	@make separator 
-	@cd test && $(PHPSPEC_BIN) run && cd ../
+	$(PHPSPEC_BIN) -c=test/phpspec/phpspec.yml run
 
 spec-report: separator
 	@echo "Running all PHPSpec files and creating HTML and coverage reports"
 	@make separator 
-	@cd test && $(PHPSPEC_BIN) run --format html > reports/phpspec/phpspec.html && cd ../
+	$(PHPSPEC_BIN) -c=test/phpspec/phpspec.yml run --format html > test/reports/php-specs/phpspec.html
 	@make spec-build
+
+spec-run: separator
+	@echo "Running spec file $(spec)"
+	@make separator 
+	$(PHPSPEC_BIN) -c=test/phpspec/phpspec.yml run $(spec)
 	
 bdd-build:
 	@make behat-build --ignore-errors

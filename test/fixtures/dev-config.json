@@ -15,11 +15,11 @@
             "pageTitle": "Test",
             "routes": {
                 "/test/static": "/test/fixtures/static-body.html.tpl",
-                "/test/plain-call": "\\spec\\BackbonePhp\\Router\\RouterSpecController::handlePlainStaticCall",
-                "/test/(:year)": "\\spec\\BackbonePhp\\Router\\RouterSpecController::handlePlainDynamicCall",
+                "/test/plain-call": "\\src\\BackbonePhp\\Router\\RouterSpecController::handlePlainStaticCall",
+                "/test/(:year)": "\\src\\BackbonePhp\\Router\\RouterSpecController::handlePlainDynamicCall",
                 "/test/invalid/class": "NonExistingController::handleCall",
-                "/test/invalid/method": "\\spec\\BackbonePhp\\Router\\RouterSpecController::handleInvalidCall",
-                "/test/resource/(:id)": "\\spec\\BackbonePhp\\Router\\RouterSpecController::handleIdCall"
+                "/test/invalid/method": "\\src\\BackbonePhp\\Router\\RouterSpecController::handleInvalidCall",
+                "/test/resource/(:id)": "\\src\\BackbonePhp\\Router\\RouterSpecController::handleIdCall"
             },
             "fields": {
                 "id": {

@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\BackbonePhp\Template;
+namespace src\BackbonePhp\Template;
 
 use PhpSpec\ObjectBehavior;
-use spec\Spec;
+use SpecHelper;
 
 class TemplateSpec extends ObjectBehavior
 {
@@ -60,13 +60,13 @@ class TemplateSpec extends ObjectBehavior
     
     function it_sets_default_template_variables()
     {
-        $this->beConstructedWith(Spec::getDevConfig());
+        $this->beConstructedWith(SpecHelper::getDevConfig());
         $this->setContent('{appBase}')->render()->getContent()->shouldReturn('/');
     }
     
     function it_renders_sub_templates()
     {
-        $path = Spec::fixturesPath() . 'static-body.html.tpl';
+        $path = SpecHelper::fixturesPath() . 'static-body.html.tpl';
         $actual = $this->setContent("{{$path}}")->render()->getContent();
         $actual->shouldContain('Hello Static');
     }

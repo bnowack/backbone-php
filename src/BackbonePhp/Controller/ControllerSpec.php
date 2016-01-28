@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\BackbonePhp\Controller;
+namespace src\BackbonePhp\Controller;
 
 use PhpSpec\ObjectBehavior;
-use spec\Spec;
+use SpecHelper;
 
 use BackbonePhp\Config\Config;
 use BackbonePhp\Request\Request;

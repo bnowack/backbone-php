@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\BackbonePhp\Status;
+namespace src\BackbonePhp\Status;
 
 use PhpSpec\ObjectBehavior;
-use spec\Spec;
+use SpecHelper;
 
 use BackbonePhp\Config\Config;
 use BackbonePhp\Request\Request;
@@ -22,7 +22,7 @@ class StatusControllerSpec extends ObjectBehavior
     public function it_generates_a_status_object()
     {
         $config = new Config();
-        $config->load(Spec::rootPath() . 'src/BackbonePhp/Application/config/models.json');
+        $config->load(SpecHelper::rootPath() . 'src/BackbonePhp/Application/config/models.json');
         $this->config = $config;
         
         $request = new Request();
