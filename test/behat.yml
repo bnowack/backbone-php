@@ -18,10 +18,10 @@ default:
             loop_break: true
         Vanare\BehatCucumberJsonFormatter\Extension:
             filename: behat.json
-            outputDir: %paths.base%/reports/behat
+            outputDir: %paths.base%/reports/features
     formatters: 
         html:
-            output_path: %paths.base%/reports/behat
+            output_path: %paths.base%/reports/features
     suites:
         build:
             paths:    [ %paths.base%/features ]
