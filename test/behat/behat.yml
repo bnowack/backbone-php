@@ -1,6 +1,6 @@
 default:
     autoload:
-        '': %paths.base%/features/_bootstrap
+        '': %paths.base%
     extensions:
         Behat\MinkExtension:
             base_url: 'http://localhost:8888/'
@@ -18,33 +18,33 @@ default:
             loop_break: true
         Vanare\BehatCucumberJsonFormatter\Extension:
             filename: behat.json
-            outputDir: %paths.base%/reports/features
+            outputDir: %paths.base%/../reports/features
     formatters: 
         html:
-            output_path: %paths.base%/reports/features
+            output_path: %paths.base%/../reports/features
     suites:
         build:
-            paths:    [ %paths.base%/features ]
+            paths:    [ %paths.base%/../../src ]
             contexts: [ FeatureContext ]
-            httpd:    { port: 8888, root: %paths.base%/../, router: router.php }
+            httpd:    { port: 8888, root: %paths.base%/../../, router: test/behat/router.php }
             ghostd:   { port: 8643 }
         ui:
-            paths:    [ %paths.base%/features ]
+            paths:    [ %paths.base%/../../src ]
             contexts: [ UiContext ]
             filters:  { tags: @ui }
-            httpd:    { port: 8888, root: %paths.base%/../, router: router.php }
+            httpd:    { port: 8888, root: %paths.base%/../../, router: test/behat/router.php }
             ghostd:   { port: 8643 }
         user:
-            paths:    [ %paths.base%/features ]
+            paths:    [ %paths.base%/../../src ]
             contexts: [ FeatureContext ]
             filters:  { role: user }
         app:
-            paths:    [ %paths.base%/features/app ]
+            paths:    [ %paths.base%/../../src/BackbonePhp/Application ]
             contexts: [ FeatureContext ]
-            httpd:    { port: 8888, root: %paths.base%/../, router: router.php }
+            httpd:    { port: 8888, root: %paths.base%/../../, router: test/behat/router.php }
             ghostd:   { port: 8643 }
         active:
-            paths:    [ %paths.base%/features/status ]
+            paths:    [ %paths.base%/../../src/BackbonePhp/Config ]
             contexts: [ FeatureContext ]
-            httpd:    { port: 8888, root: %paths.base%/../, router: router.php }
+            httpd:    { port: 8888, root: %paths.base%/../../, router: test/behat/router.php }
             ghostd:   { port: 8643 }

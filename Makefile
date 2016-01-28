@@ -1,5 +1,5 @@
 
-BEHAT_BIN = ../bin/behat
+BEHAT_BIN = bin/behat
 PHPSPEC_BIN = bin/phpspec
 SPEC_REPORT_DIR = 
 
@@ -25,12 +25,12 @@ separator:
 behat-active: separator
 	@echo "Running Behat features from 'active' suite"
 	@make separator 
-	@cd test && $(BEHAT_BIN) --suite=active -f pretty && cd ../
+	$(BEHAT_BIN) --config test/behat/behat.yml --suite=active -f pretty
 
 behat-build: separator
 	@echo "Running Behat features from 'build' suite and creating HTML and JSON reports"
 	@make separator 
-	@cd test && $(BEHAT_BIN) --suite=build -f pretty -f html -f cucumber_json && cd ../
+	$(BEHAT_BIN) --config test/behat/behat.yml --suite=build -f pretty -f html -f cucumber_json
 
 spec-build: separator
 	@echo "Running all PHPSpec files"
@@ -59,7 +59,7 @@ bdd-report:
 	@make separator 
 
 www-start:
-	php -S localhost:8889 -t ./ test/router.php
+	php -S localhost:8889 -t ./ test/behat/router.php
 
 scss-start:
 	php vendor/bnowack/scss-watcher/scripts/watch.php --path=src

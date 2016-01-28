@@ -1,4 +1,4 @@
-Feature: Status page
+Feature: Status API
     In order to monitor the application
     As an application maintainer
     I can access a status page with system information

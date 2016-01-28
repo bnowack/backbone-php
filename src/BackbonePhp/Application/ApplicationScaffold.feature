@@ -1,4 +1,4 @@
-Feature: Front-Controller
+Feature: Application scaffold
     In order to create applications quickly
     As a developer
     I get a working BackboneJS scaffold out of the box

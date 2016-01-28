@@ -15,8 +15,8 @@ if (php_sapi_name() !== 'cli-server') {
 date_default_timezone_set(@date_default_timezone_get());
 
 // Define path constants
-define("BACKBONEPHP_DIR",       dirname(__DIR__) . '/');  // repo dir is 1 hop up from "/test/router.php"
-define("BACKBONEPHP_APP_DIR",   BACKBONEPHP_DIR);     // same as repo dir during development
+define("BACKBONEPHP_DIR",       dirname(dirname(__DIR__)) . '/');// repo dir is 1 hop up from "/test/behat/router.php"
+define("BACKBONEPHP_APP_DIR",   BACKBONEPHP_DIR);// same as repo dir during development
 
 // Include autoloader
 require_once BACKBONEPHP_APP_DIR . 'vendor/autoload.php';

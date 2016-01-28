@@ -21,7 +21,7 @@ class FeatureContext extends ProjectContext implements Context, SnippetAccepting
     public function __construct()
     {
         parent::__construct();
-        $this->testDir = __DIR__ . '/../../';
+        $this->testDir = __DIR__ . '/../';
     }
 
 }

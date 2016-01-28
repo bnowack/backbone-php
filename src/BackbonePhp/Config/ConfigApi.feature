@@ -1,4 +1,4 @@
-Feature: Frontend-Config API
+Feature: Config API
     In order to access the application configuration
     As a developer
     I can retrieve the configuration via an API
