@@ -1,7 +1,6 @@
 {
     "models": {
         "404": {
-            "pageTemplate": "/src/BackbonePhp/Application/templates/page.html.tpl",
             "appTitle": "BackbonePHP",
             "pageTitle": "Page not found",
             "responseCode": 404,
@@ -20,7 +19,6 @@
             }
         },
         "home": {
-            "pageTemplate": "/src/BackbonePhp/Application/templates/page.html.tpl",
             "appTitle": "BackbonePHP",
             "pageTitle": "Welcome",
             "routes": {

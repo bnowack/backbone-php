@@ -8,6 +8,7 @@
     "pageTitleDelimiter": " - ",
     "webIcon": "vendor/bnowack/backbone-php/src/img/favicon.ico",
     "appIcon": "vendor/bnowack/backbone-php/src/img/touch-icon.png",
+    "pageTemplate": "/src/BackbonePhp/Application/templates/page.html.tpl",
     "templateFields": [
         "appBase", 
         "appVersion", 

@@ -48,6 +48,29 @@ class ControllerSpec extends ObjectBehavior
         $this->handleTemplateRouteRequest($request, $response, $route)->shouldReturn($this);
     }
     
+    public function it_allows_page_template_definition_at_app_level()
+    {
+        $config = new Config();
+        $this->config = $config;
+        
+        $request = new Request();
+        $response = new Response();
+        
+        $config->set('pageTemplate', '/test/fixtures/index.html.tpl');
+        $request->setPath('/test');
+        
+        $route = (object)[
+            "path" => "/test",
+            "type" => "template",
+            "template" => "/test/fixtures/static-body.html.tpl",
+            "model" => (object)[
+                "pageTitle" => 'test'
+            ]
+        ];
+        $this->handleTemplateRouteRequest($request, $response, $route)->shouldReturn($this);
+        Assertions::assertContains('Hello Static', $response->getBody(), 'should have found page template in global config');
+    }
+    
     public function it_support_response_code_and_type_in_template_requests()
     {
         // config

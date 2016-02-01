@@ -38,7 +38,10 @@ class Controller
      */
     public function handleTemplateRouteRequest($request, $response, $route)
     {
-        $pageTemplate = $route->model->pageTemplate;
+        $pageTemplate = isset($route->model->pageTemplate)
+            ? $route->model->pageTemplate
+            : $this->config->get('pageTemplate')
+        ;
         $pageTitle = $this->getFullPageTitle($route);
         $bodyTemplate = $route->template;
         $responseCode = isset($route->model->responseCode)
